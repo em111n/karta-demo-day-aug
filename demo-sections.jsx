@@ -851,20 +851,25 @@ const PD_FEATURES = [
 function ProductDesignBlock() {
   const [active, setActive] = uS(0);
   const [protoOpen, setProtoOpen] = uS(false);
+  const [mediaOpen, setMediaOpen] = uS(false);
   const protoRef = uR(null);
+  const mediaRef = uR(null);
   const cur = PD_FEATURES[active];
+  const prevItem = () => setActive((i) => (i - 1 + PD_FEATURES.length) % PD_FEATURES.length);
+  const nextItem = () => setActive((i) => (i + 1) % PD_FEATURES.length);
 
-  // Arrow-key navigation through PD_FEATURES when the fullscreen modal is closed.
+  // Arrow-key navigation through PD_FEATURES when no fullscreen modal is open.
   uE(() => {
-    if (protoOpen) return;
+    if (protoOpen || mediaOpen) return;
     const onKey = (e) => {
-      if (e.key === "ArrowLeft")  setActive((i) => (i - 1 + PD_FEATURES.length) % PD_FEATURES.length);
-      if (e.key === "ArrowRight") setActive((i) => (i + 1) % PD_FEATURES.length);
+      if (e.key === "ArrowLeft")  prevItem();
+      if (e.key === "ArrowRight") nextItem();
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [protoOpen]);
+  }, [protoOpen, mediaOpen]);
 
+  // Figma proto fullscreen
   uE(() => {
     if (!protoOpen) return;
     const prev = document.body.style.overflow;
@@ -878,7 +883,6 @@ function ProductDesignBlock() {
     window.addEventListener("keydown", onKey);
     document.addEventListener("fullscreenchange", onFsChange);
     document.addEventListener("webkitfullscreenchange", onFsChange);
-    // Enter fullscreen after the modal element is in the DOM
     const raf = requestAnimationFrame(() => {
       const el = protoRef.current;
       if (!el) return;
@@ -897,6 +901,41 @@ function ProductDesignBlock() {
       }
     };
   }, [protoOpen]);
+
+  // Media (img/video) fullscreen with prev/next through PD_FEATURES.
+  uE(() => {
+    if (!mediaOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e) => {
+      if (e.key === "Escape") setMediaOpen(false);
+      else if (e.key === "ArrowLeft")  prevItem();
+      else if (e.key === "ArrowRight") nextItem();
+    };
+    const onFsChange = () => {
+      if (!document.fullscreenElement && !document.webkitFullscreenElement) setMediaOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    document.addEventListener("fullscreenchange", onFsChange);
+    document.addEventListener("webkitfullscreenchange", onFsChange);
+    const raf = requestAnimationFrame(() => {
+      const el = mediaRef.current;
+      if (!el) return;
+      const req = el.requestFullscreen || el.webkitRequestFullscreen;
+      if (req) { try { req.call(el); } catch (_) {} }
+    });
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener("keydown", onKey);
+      document.removeEventListener("fullscreenchange", onFsChange);
+      document.removeEventListener("webkitfullscreenchange", onFsChange);
+      cancelAnimationFrame(raf);
+      if (document.fullscreenElement || document.webkitFullscreenElement) {
+        const exit = document.exitFullscreen || document.webkitExitFullscreen;
+        if (exit) { try { exit.call(document); } catch (_) {} }
+      }
+    };
+  }, [mediaOpen]);
 
   return (
     <div>
@@ -941,9 +980,11 @@ function ProductDesignBlock() {
             </React.Fragment>
           ) : cur.video ? (
             <video key={cur.video} src={cur.video} autoPlay muted loop playsInline controls
-              style={{ maxWidth: "100%", maxHeight: 620, width: "auto", height: "auto", objectFit: "contain", borderRadius: 10, display: "block" }} />
+              onClick={() => setMediaOpen(true)}
+              style={{ maxWidth: "100%", maxHeight: 620, width: "auto", height: "auto", objectFit: "contain", borderRadius: 10, display: "block", cursor: "zoom-in" }} />
           ) : cur.img ? (
-            <img src={cur.img} alt={cur.title} data-lightbox-src={cur.img} data-lightbox-cap={cur.title}
+            <img src={cur.img} alt={cur.title}
+              onClick={() => setMediaOpen(true)}
               style={{ maxWidth: "100%", maxHeight: 620, width: "auto", height: "auto", objectFit: "contain", borderRadius: 10, cursor: "zoom-in" }} />
           ) : (
             <div style={{ textAlign: "center", display: "flex", flexDirection: "column", gap: 10, alignItems: "center", opacity: .7 }}>
@@ -975,6 +1016,47 @@ function ProductDesignBlock() {
               allowFullScreen
               title={`${cur.title} prototype`}
             />
+          </div>
+        </div>
+      )}
+
+      {/* Fullscreen media viewer — cycles through PD_FEATURES */}
+      {mediaOpen && (cur.img || cur.video) && (
+        <div ref={mediaRef} onClick={() => setMediaOpen(false)}
+          style={{ position: "fixed", inset: 0, zIndex: 100, background: "rgba(0,0,0,.94)", display: "flex", flexDirection: "column", padding: "clamp(18px, 2vw, 28px)", gap: 12 }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, color: FG }}>
+            <span style={{ fontFamily: FD, fontWeight: 700, fontSize: 12, letterSpacing: ".22em", textTransform: "uppercase", color: FG3 }}>{String(active + 1).padStart(2, "0")} · {cur.title}</span>
+            <button onClick={(e) => { e.stopPropagation(); setMediaOpen(false); }}
+              style={{ padding: "8px 16px", borderRadius: 999, background: "rgba(255,255,255,.08)", color: FG, border: `1px solid ${LINE}`, cursor: "pointer", fontFamily: FD, fontWeight: 600, fontSize: 13, letterSpacing: ".04em" }}>
+              Закрыть · Esc
+            </button>
+          </div>
+          <div onClick={(e) => e.stopPropagation()} style={{ position: "relative", flex: 1, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
+            <button onClick={(e) => { e.stopPropagation(); prevItem(); }} aria-label="Previous"
+              style={{ position: "absolute", left: "clamp(6px, 1.5vw, 24px)", top: "50%", transform: "translateY(-50%)", zIndex: 2, width: 56, height: 56, borderRadius: "50%", background: "rgba(255,255,255,.08)", border: `1px solid ${LINE}`, color: FG, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", backdropFilter: "blur(8px)", transition: "background .18s" }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(255,255,255,.16)"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = "rgba(255,255,255,.08)"; }}>
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke={FG} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15,6 9,12 15,18" /></svg>
+            </button>
+            {cur.video ? (
+              <video key={cur.video} src={cur.video} autoPlay loop playsInline controls
+                style={{ maxWidth: "min(100%, 1400px)", maxHeight: "100%", width: "auto", height: "auto", objectFit: "contain", borderRadius: 10, display: "block" }} />
+            ) : (
+              <img key={cur.img} src={cur.img} alt={cur.title}
+                style={{ maxWidth: "min(100%, 1400px)", maxHeight: "100%", width: "auto", height: "auto", objectFit: "contain", borderRadius: 10, display: "block" }} />
+            )}
+            <button onClick={(e) => { e.stopPropagation(); nextItem(); }} aria-label="Next"
+              style={{ position: "absolute", right: "clamp(6px, 1.5vw, 24px)", top: "50%", transform: "translateY(-50%)", zIndex: 2, width: 56, height: 56, borderRadius: "50%", background: "rgba(255,255,255,.08)", border: `1px solid ${LINE}`, color: FG, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", backdropFilter: "blur(8px)", transition: "background .18s" }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(255,255,255,.16)"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = "rgba(255,255,255,.08)"; }}>
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke={FG} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9,6 15,12 9,18" /></svg>
+            </button>
+          </div>
+          <div style={{ display: "flex", justifyContent: "center", gap: 8 }}>
+            {PD_FEATURES.map((_, i) => (
+              <button key={i} onClick={(e) => { e.stopPropagation(); setActive(i); }} aria-label={`Slide ${i + 1}`}
+                style={{ width: i === active ? 24 : 8, height: 8, borderRadius: 999, background: i === active ? ACID : "rgba(255,255,255,.24)", border: "none", cursor: "pointer", transition: "width .18s, background .18s", padding: 0 }} />
+            ))}
           </div>
         </div>
       )}
