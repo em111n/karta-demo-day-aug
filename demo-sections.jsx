@@ -683,6 +683,19 @@ function DemoDelivery() {
           </div>
         </Reveal>
 
+        {/* 8. Demo · PayIn + PayOut videos */}
+        <Reveal delay={0.18}>
+          <div style={{ marginTop: "clamp(32px, 4vw, 56px)" }}>
+            <h3 style={{ margin: "0 0 clamp(16px, 2vw, 22px)", fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(34px, 4.6vw, 60px)", letterSpacing: "-.025em", lineHeight: 1.02, color: FG }}>
+              <span style={{ color: ACID }}>Demo</span>
+            </h3>
+            <VideoAdsRow columns={2} items={[
+              { src: "assets/demo-aug/payin.webm",  label: "PayIn",  aspectRatio: "16 / 9", accent: true },
+              { src: "assets/demo-aug/payout.webm", label: "PayOut", aspectRatio: "16 / 9" },
+            ]} />
+          </div>
+        </Reveal>
+
       </Section>
     </React.Fragment>
   );
