@@ -854,6 +854,17 @@ function ProductDesignBlock() {
   const protoRef = uR(null);
   const cur = PD_FEATURES[active];
 
+  // Arrow-key navigation through PD_FEATURES when the fullscreen modal is closed.
+  uE(() => {
+    if (protoOpen) return;
+    const onKey = (e) => {
+      if (e.key === "ArrowLeft")  setActive((i) => (i - 1 + PD_FEATURES.length) % PD_FEATURES.length);
+      if (e.key === "ArrowRight") setActive((i) => (i + 1) % PD_FEATURES.length);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [protoOpen]);
+
   uE(() => {
     if (!protoOpen) return;
     const prev = document.body.style.overflow;
