@@ -1383,9 +1383,9 @@ function DemoDesign() {
             Video ADs
           </h2>
           <VideoAdsRow items={[
-            { src: "assets/creative-jul/referral-ad.mp4", label: "Referral AD", aspectRatio: "4 / 5", accent: true },
-            { src: "assets/creative-jul/motion-fin.mp4",  label: "Low Fees",    aspectRatio: "4 / 5" },
-            { src: "assets/creative-jul/motion-nb.mp4",   label: "Karta Says Yes", aspectRatio: "4 / 5" },
+            { src: "assets/vad-aug/service-costs.mp4", label: "Service costs", aspectRatio: "9 / 16", accent: true },
+            { src: "assets/vad-aug/cortizol.mp4",      label: "Cortizol",      aspectRatio: "9 / 16" },
+            { src: "assets/vad-aug/topup.mp4",         label: "TopUp",         aspectRatio: "9 / 16" },
           ]} />
           <style>{`@media (max-width: 900px) { .dd-video-ads { grid-template-columns: 1fr !important; } }`}</style>
         </div>
