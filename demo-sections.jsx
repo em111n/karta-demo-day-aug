@@ -235,28 +235,52 @@ function DemoContext() {
           <StatBlock label="Рефереры · клейм" value="17%" sub="из 203 когорты доходят до выплаты" />
         </div>
 
-        {/* Что выяснили в августе */}
+        {/* Что выяснили в августе — два симметричных блока */}
         <div className="dd-two-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(16px, 2vw, 24px)", marginTop: "clamp(20px, 2.4vw, 30px)" }}>
-          <ColBlock title="Исследование хайспендеров" kicker="DIS-80 · 11.08" items={[
-            "Естественная отсечка — <b>top-10% (Tier A)</b>, не top-20%",
-            "Tier A даёт <b>69% выручки</b>, разрыв LTV12 с нижним децилем — <b>247×</b>",
-            "Концентрация в топе снижается: доля топ-10 клиентов в GTV <b>24.6% → 13.3%</b>",
-            "База растёт вширь — здоровый сигнал",
-          ]} accent />
-          <ColBlock title="Опрос рефереров" kicker="203 респондента · 7–10.08" items={[
-            "Приглашают <b>из любви к продукту</b> (60%)",
-            "Петля рвётся на выплате — до клейма доходят только <b>17%</b>",
-            "Киты (10+ приглашённых) — снижение порога <b>2 000 Karats</b> запрос №1 (57%)",
-            "Кандидат №1 в roadmap: <b>2 000 → 500 Karats</b>",
-          ]} />
+          {[
+            {
+              title: ["Исследование", "хайспендеров"],
+              meta: "DIS-80 · 11.08",
+              items: [
+                "Естественная отсечка — <b>top-10% (Tier A)</b>, не top-20%",
+                "Tier A даёт <b>69% выручки</b>, разрыв LTV12 с нижним децилем — <b>247×</b>",
+                "Концентрация в топе снижается: доля топ-10 клиентов в GTV <b>24.6% → 13.3%</b>",
+                "База растёт вширь — здоровый сигнал",
+              ],
+              accent: true,
+            },
+            {
+              title: ["Опрос", "рефереров"],
+              meta: "203 респондента · 7–10.08",
+              items: [
+                "Приглашают <b>из любви к продукту</b> (60%)",
+                "Петля рвётся на выплате — до клейма доходят только <b>17%</b>",
+                "Киты (10+ приглашённых) — снижение порога <b>2 000 Karats</b> запрос №1 (57%)",
+                "Кандидат №1 в roadmap: <b>2 000 → 500 Karats</b>",
+              ],
+            },
+          ].map((b, i) => (
+            <div key={i} style={{ padding: "clamp(24px, 2.8vw, 36px)", borderRadius: 14, border: b.accent ? "1px solid rgba(204,255,0,.28)" : `1px solid ${LINE}`, background: b.accent ? "linear-gradient(135deg, rgba(204,255,0,.06), rgba(204,255,0,.015) 70%)" : "linear-gradient(165deg, rgba(255,255,255,.06), rgba(255,255,255,.015) 70%)", display: "flex", flexDirection: "column", gap: "clamp(20px, 2.4vw, 30px)" }}>
+              <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 16, flexWrap: "wrap" }}>
+                <h3 style={{ margin: 0, fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(28px, 3.4vw, 44px)", letterSpacing: "-.025em", lineHeight: .95, textTransform: "uppercase", color: b.accent ? ACID : FG }}>
+                  {b.title[0]}<br />{b.title[1]}
+                </h3>
+                <span style={{ fontFamily: FD, fontWeight: 600, fontSize: "clamp(11px, 1.15vw, 13px)", letterSpacing: ".22em", textTransform: "uppercase", color: FG4, textAlign: "right", paddingTop: 8 }}>{b.meta}</span>
+              </div>
+              <div style={{ borderTop: `1px solid ${b.accent ? "rgba(204,255,0,.18)" : LINE}` }} />
+              <BulletList items={b.items} />
+            </div>
+          ))}
         </div>
 
-        {/* Roadmap Q3 */}
+        {/* Roadmap Q3 — big H1 */}
         <Reveal delay={0.08}>
-          <div style={{ marginTop: "clamp(24px, 3vw, 40px)", padding: "clamp(24px, 2.8vw, 36px)", borderRadius: 14, border: "1px solid rgba(204,255,0,.28)", background: "linear-gradient(135deg, rgba(204,255,0,.06), rgba(204,255,0,.015) 70%)" }}>
-            <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 16, flexWrap: "wrap", marginBottom: 20 }}>
-              <span style={{ fontFamily: FD, fontWeight: 700, fontSize: 11, letterSpacing: ".22em", textTransform: "uppercase", color: ACID }}>Roadmap · Q3</span>
-              <span style={{ fontFamily: FD, fontWeight: 500, fontSize: 13, color: FG3 }}>согласовано с командой</span>
+          <div style={{ marginTop: "clamp(32px, 4vw, 56px)" }}>
+            <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 16, flexWrap: "wrap", marginBottom: "clamp(20px, 2.4vw, 32px)" }}>
+              <h2 style={{ margin: 0, fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(48px, 6.4vw, 88px)", letterSpacing: "-.035em", lineHeight: .95, color: FG }}>
+                Roadmap · <span style={{ color: ACID }}>Q3</span>
+              </h2>
+              <span style={{ fontFamily: FD, fontWeight: 500, fontSize: "clamp(13px, 1.4vw, 16px)", color: FG3, paddingBottom: 12 }}>согласовано с командой</span>
             </div>
             <div className="dd-two-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "clamp(14px, 1.8vw, 22px)" }}>
               <ColBlock title="Product" items={[
@@ -264,7 +288,7 @@ function DemoContext() {
                 "Tx старой базы <b>+30%</b> (35 → 45.5 tx/мес на юзера)",
                 "Retention Tier A <b>95% → 97%</b>",
                 "Subscription — go/no-go к октябрю",
-              ]} />
+              ]} accent />
               <ColBlock title="Marketing" items={[
                 "Воронка KYC → платящий <b>8.8% → 13.2%</b>",
                 "Affiliate-программа <b>с нуля</b>",
@@ -346,22 +370,37 @@ function DemoProduct() {
     <React.Fragment>
       <SectionHero id="product" num="03" kicker="product metrics" align="left" glow
         parts={[{ t: "GTV $12.24M — " }, { t: "49% плана.", hi: true }]}
-        lead="+3.3% MoM. Платящих +1%, транзакций +1%. Годовая цель $55M/мес к декабрю требует 25.8% MoM — отстаём на 2 месяца." />
+        lead="Tier A даёт 69% выручки при LTV/CAC 133×. Ключевой рычаг Q3 — Digital Wallet и Tx старой базы." />
       <Section tightTop dataLabel="03 Product">
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "clamp(14px, 1.6vw, 22px)" }}>
-          <StatBlock label="GTV · August" value="$12.24M" sub="цель $24M · 49% плана" accent big />
-          <StatBlock label="MoM growth" value="+3.3%" sub="наблюдаемый MoM ≈ 9%" />
-          <StatBlock label="Paying users" value="5 984" sub="+1% · было 5 924" />
-          <StatBlock label="Transactions" value="245 190" sub="+1% · было 243 109" />
-        </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "clamp(14px, 1.6vw, 22px)", marginTop: "clamp(14px, 1.6vw, 22px)" }}>
-          <StatBlock label="Median spend / user" value="$189" sub="было $184" />
-          <StatBlock label="Plan gap · год" value="≈ 2 мес" sub="нужно 25.8% MoM, факт 9%" />
+        {/* GTV hero block with +3.3% chip */}
+        <div style={{ padding: "clamp(24px, 2.8vw, 40px)", borderRadius: 14, border: "1px solid rgba(204,255,0,.28)", background: "linear-gradient(135deg, rgba(204,255,0,.06), rgba(204,255,0,.015) 70%)", display: "flex", flexDirection: "column", gap: "clamp(16px, 2vw, 24px)" }}>
+          <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 16, flexWrap: "wrap" }}>
+            <div>
+              <span style={{ display: "block", fontFamily: FD, fontWeight: 700, fontSize: 11, letterSpacing: ".22em", textTransform: "uppercase", color: ACID, marginBottom: 8 }}>GTV · август</span>
+              <div style={{ display: "flex", alignItems: "baseline", gap: 14, flexWrap: "wrap" }}>
+                <h3 style={{ margin: 0, fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(48px, 6.4vw, 96px)", letterSpacing: "-.035em", lineHeight: .95, color: FG, fontVariantNumeric: "tabular-nums" }}>$12.24M</h3>
+                <span style={{ padding: "6px 12px", borderRadius: 999, background: ACID, color: "#0a0a0a", fontFamily: FD, fontWeight: 800, fontStretch: "115%", fontVariationSettings: "'wght' 800,'wdth' 115", fontSize: "clamp(14px, 1.5vw, 18px)", letterSpacing: "-.005em" }}>+3.3% MoM</span>
+              </div>
+              <span style={{ display: "block", marginTop: 8, fontFamily: FD, fontWeight: 500, fontSize: "clamp(13px, 1.35vw, 15px)", color: FG3 }}>цель $24M · 49% плана</span>
+            </div>
+            <div style={{ padding: "14px 18px", border: `1px solid ${LINE}`, borderRadius: 12, background: "rgba(255,255,255,.03)", maxWidth: 380 }}>
+              <div style={{ fontFamily: FD, fontWeight: 700, fontSize: 10, letterSpacing: ".2em", textTransform: "uppercase", color: FG4, marginBottom: 6 }}>Годовая цель</div>
+              <div style={{ fontFamily: FD, fontWeight: 700, fontSize: "clamp(14px, 1.45vw, 16px)", lineHeight: 1.45, color: FG2 }}>
+                <b style={{ color: FG }}>$55M/мес к декабрю</b> требует <b style={{ color: FG }}>25.8% MoM</b> — отстаём <b style={{ color: ACID }}>на 2 месяца</b>
+              </div>
+            </div>
+          </div>
+          <div style={{ borderTop: "1px solid rgba(204,255,0,.15)" }} />
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "clamp(12px, 1.4vw, 18px)" }}>
+            <StatBlock label="Paying users" value="5 984" sub="+1% · было 5 924" />
+            <StatBlock label="Transactions" value="245 190" sub="+1% · было 243 109" />
+            <StatBlock label="Median spend / user" value="$189" sub="было $184" />
+          </div>
         </div>
 
         {/* Tier A hero block */}
         <Reveal delay={0.08}>
-          <div style={{ marginTop: "clamp(24px, 3vw, 40px)", padding: "clamp(24px, 2.8vw, 36px)", borderRadius: 14, border: "1px solid rgba(204,255,0,.28)", background: "linear-gradient(135deg, rgba(204,255,0,.06), rgba(204,255,0,.015) 70%)" }}>
+          <div style={{ marginTop: "clamp(24px, 3vw, 40px)", padding: "clamp(24px, 2.8vw, 36px)", borderRadius: 14, border: `1px solid ${LINE}`, background: "linear-gradient(165deg, rgba(255,255,255,.06), rgba(255,255,255,.015) 70%)" }}>
             <div style={{ display: "flex", alignItems: "baseline", gap: 14, marginBottom: 20, flexWrap: "wrap" }}>
               <span style={{ fontFamily: FD, fontWeight: 700, fontSize: 11, letterSpacing: ".22em", textTransform: "uppercase", color: ACID }}>Tier A · top-10% платящих</span>
               <span style={{ fontFamily: FD, fontWeight: 500, fontSize: 13, color: FG3 }}>824 человека</span>
@@ -378,20 +417,54 @@ function DemoProduct() {
           </div>
         </Reveal>
 
-        {/* Referral survey callout */}
-        <div className="dd-two-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(16px, 2vw, 24px)", marginTop: "clamp(24px, 3vw, 32px)" }}>
-          <ColBlock title="Опрос рефереров" kicker="203 респондента · RR 9.8% · ±6.5 п.п." items={[
-            "До выплаты доходят только <b>17%</b> когорты",
-            "Порог клейма <b>2 000 Karats</b> — тормоз №1 у активных рефереров",
-            "Считаем экономику <b>2 000 → 500 Karats</b> — самый дешёвый рычаг",
-          ]} />
-          <ColBlock title="Что дальше" items={[
-            "Tx старой базы <b>→ 45.5/мес</b> на юзера = +$788 GTV/юзер (+30%)",
-            "DW-экран в онбординге · <b>QR-payments</b> · физкарты на поток",
-            "Retention M1 <b>30 → 35%</b> — самый дорогой узел",
-            "Subscription — go/no-go к октябрю",
-          ]} accent />
-        </div>
+        {/* Что дальше — крупный основной блок */}
+        <Reveal delay={0.12}>
+          <div style={{ marginTop: "clamp(32px, 4vw, 56px)" }}>
+            <h2 style={{ margin: "0 0 clamp(20px, 2.4vw, 32px)", fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(48px, 6.4vw, 88px)", letterSpacing: "-.035em", lineHeight: .95, color: FG }}>
+              Что <span style={{ color: ACID }}>дальше</span>
+            </h2>
+            <div className="dd-two-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(16px, 2vw, 24px)" }}>
+              {[
+                { k: "01", title: "Tx старой базы", accent: true,
+                  metric: "+30%",
+                  sub: "35 → 45.5 tx/мес на юзера",
+                  bullet: "= <b>+$788 GTV/юзер</b> в месяц",
+                  extra: "DW-экран в онбординге · QR-payments · физкарты на поток" },
+                { k: "02", title: "Retention M1",
+                  metric: "30 → 35%",
+                  sub: "самый дорогой узел дерева",
+                  bullet: "Онбординг · DW-фича · триггеры возврата",
+                  extra: null },
+                { k: "03", title: "Реферальный порог",
+                  metric: "2 000 → 500",
+                  sub: "Karats · тормоз №1 (57% рефереров)",
+                  bullet: "Считаем экономику — самый дешёвый рычаг",
+                  extra: null },
+                { k: "04", title: "Subscription",
+                  metric: "go / no-go",
+                  sub: "к октябрю",
+                  bullet: "Модель монетизации Tier A — <b>$225 ARPU/мес</b>",
+                  extra: null },
+              ].map((it, i) => (
+                <div key={i} style={{ padding: "clamp(24px, 2.8vw, 34px)", borderRadius: 14, border: it.accent ? "1px solid rgba(204,255,0,.32)" : `1px solid ${LINE}`, background: it.accent ? "linear-gradient(135deg, rgba(204,255,0,.06), rgba(204,255,0,.015) 70%)" : "linear-gradient(165deg, rgba(255,255,255,.06), rgba(255,255,255,.015) 70%)", display: "flex", flexDirection: "column", gap: "clamp(12px, 1.4vw, 18px)" }}>
+                  <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 16 }}>
+                    <span style={{ fontFamily: FD, fontWeight: 700, fontSize: 13, letterSpacing: ".22em", color: it.accent ? ACID : FG4, fontVariantNumeric: "tabular-nums" }}>{it.k}</span>
+                    <span style={{ fontFamily: FD, fontWeight: 700, fontStretch: "115%", fontVariationSettings: "'wght' 700,'wdth' 115", fontSize: "clamp(18px, 1.9vw, 22px)", letterSpacing: "-.012em", color: FG }}>{it.title}</span>
+                  </div>
+                  <div style={{ fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(40px, 5.2vw, 68px)", letterSpacing: "-.03em", lineHeight: .95, color: it.accent ? ACID : FG, fontVariantNumeric: "tabular-nums" }}>
+                    {it.metric}
+                  </div>
+                  <div style={{ fontFamily: FD, fontWeight: 500, fontSize: "clamp(13px, 1.35vw, 15px)", color: FG3 }}>{it.sub}</div>
+                  <div style={{ borderTop: `1px solid ${it.accent ? "rgba(204,255,0,.18)" : LINE}` }} />
+                  <div style={{ fontFamily: FD, fontWeight: 500, fontSize: "clamp(14px, 1.5vw, 17px)", lineHeight: 1.5, color: FG2 }} dangerouslySetInnerHTML={{ __html: it.bullet }} />
+                  {it.extra && (
+                    <div style={{ fontFamily: FD, fontWeight: 500, fontSize: "clamp(13px, 1.35vw, 15px)", lineHeight: 1.45, color: FG3, fontStyle: "italic" }}>{it.extra}</div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
       </Section>
     </React.Fragment>
   );
@@ -404,49 +477,113 @@ function DemoDelivery() {
   return (
     <React.Fragment>
       <SectionHero id="delivery" num="04" kicker="delivery · dev · qa" align="left" glow
-        parts={[{ t: "Pay In · Rain · " }, { t: "атака отражена.", hi: true }]}
-        lead="Sprint capacity удержали на 309 sp, passrate вырос до 75.6%, безопасность выдержала атаку." />
+        parts={[{ t: "Август 2026 — " }, { t: "итоги и ключевые вехи.", hi: true }]}
+        lead="309 sp удержаны, passrate 75.6%, безопасность выдержала атаку. Pay In Due и Virtual Account Rain — в продакшн." />
       <Section tightTop dataLabel="04 Delivery">
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "clamp(14px, 1.6vw, 22px)" }}>
-          <StatBlock label="Avg SP · August" value="309" sub="capacity 309 sp · 100%" accent big />
-          <StatBlock label="QA PassRate" value="75.6%" sub="было 72% · вверх" />
-          <StatBlock label="Автотесты · KYC моки" value="99.9%" sub="без переключения вебхуков" />
-          <StatBlock label="Безопасность" value="Атака отражена" sub="действия сведены к нулю" />
+
+        {/* 1. Метрики и производительность */}
+        <div>
+          <h3 style={{ margin: "0 0 clamp(16px, 2vw, 22px)", fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(28px, 3.6vw, 44px)", letterSpacing: "-.025em", lineHeight: 1.02, color: FG }}>
+            Метрики и <span style={{ color: ACID }}>производительность</span>
+          </h3>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "clamp(14px, 1.6vw, 22px)" }}>
+            <StatBlock label="Avg SP · август" value="309" sub="capacity 309 sp · 100%" accent big />
+            <StatBlock label="QA PassRate" value="75.6%" sub="было 72% · рост" />
+            <StatBlock label="Автотесты · KYC моки" value="99.9%" sub="без переключения вебхуков" />
+            <StatBlock label="Безопасность" value="Атака отражена" sub="действия сведены к нулю" />
+          </div>
+          <p style={{ margin: "clamp(14px, 1.6vw, 20px) 0 0", fontFamily: FD, fontWeight: 500, fontSize: "clamp(14px, 1.4vw, 16px)", lineHeight: 1.5, color: FG3 }}>
+            Уровень предыдущих спринтов сохранён. Внедрены <b style={{ color: FG }}>новая система приоритетов</b> и <b style={{ color: FG }}>новая система планирования</b> — курс на ускорение доставки фичей.
+          </p>
         </div>
 
-        {/* Ship log */}
-        <Reveal delay={0.08}>
-          <div style={{ marginTop: "clamp(20px, 2.4vw, 30px)", padding: "clamp(24px, 2.8vw, 36px)", borderRadius: 14, border: `1px solid ${LINE}`, background: "linear-gradient(165deg, rgba(255,255,255,.06), rgba(255,255,255,.015) 70%)" }}>
-            <h3 style={{ margin: 0, fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(18px, 1.8vw, 24px)", letterSpacing: ".04em", textTransform: "uppercase", color: FG, marginBottom: 20 }}>Ship log · August</h3>
-            <div className="dd-two-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(16px, 2vw, 26px)" }}>
+        {/* 2. Релизы (Август) */}
+        <Reveal delay={0.06}>
+          <div style={{ marginTop: "clamp(32px, 4vw, 56px)" }}>
+            <h3 style={{ margin: "0 0 clamp(16px, 2vw, 22px)", fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(28px, 3.6vw, 44px)", letterSpacing: "-.025em", lineHeight: 1.02, color: FG }}>
+              Релизы <span style={{ color: FG4, fontWeight: 600 }}>(Август)</span>
+            </h3>
+            <div className="dd-two-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(16px, 2vw, 24px)" }}>
               <ColBlock title="Выпущено" items={[
                 "<b>Pay In Due</b>",
                 "<b>Virtual Account Rain</b>",
                 "Новые маркетинговые ивенты (KYC и др.)",
               ]} accent />
-              <ColBlock title="В работе · финишная прямая" items={[
+              <ColBlock title="В работе (Финишная прямая)" items={[
                 "<b>New Payment Channels</b>",
                 "<b>Pay Out</b>",
                 "<b>DWH</b>",
               ]} />
-              <ColBlock title="Следующие вехи" items={[
-                "Доставка <b>физкарт</b>",
-                "Переезд на <b>Andgate</b>",
-                "Реализация <b>Card Offer</b>",
-                "Задачи <b>рефералки</b>",
-              ]} />
-              <ColBlock title="Процесс" items={[
-                "Внедрена <b>новая система приоритетов</b> — рост фичевых задач",
-                "Внедрена <b>новая система планирования</b>",
-                "Курс на ускорение доставки фичей",
-              ]} accent />
             </div>
           </div>
         </Reveal>
 
-        {/* QA + Autotests */}
+        {/* 3. Следующие запланированные вехи */}
+        <Reveal delay={0.08}>
+          <div style={{ marginTop: "clamp(24px, 3vw, 40px)" }}>
+            <h3 style={{ margin: "0 0 clamp(16px, 2vw, 22px)", fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(28px, 3.6vw, 44px)", letterSpacing: "-.025em", lineHeight: 1.02, color: FG }}>
+              Следующие <span style={{ color: ACID }}>запланированные вехи</span>
+            </h3>
+            <div className="dd-milestones" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "clamp(12px, 1.4vw, 18px)" }}>
+              {[
+                { t: "Доставка физкарт" },
+                { t: "Переезд на Andgate" },
+                { t: "Реализация Card Offer" },
+                { t: "Задачи рефералки" },
+              ].map((m, i) => (
+                <div key={i} style={{ padding: "clamp(20px, 2.4vw, 28px)", borderRadius: 14, border: `1px solid ${LINE}`, background: "linear-gradient(165deg, rgba(255,255,255,.06), rgba(255,255,255,.015) 70%)", display: "flex", flexDirection: "column", gap: 10, minHeight: 130 }}>
+                  <span style={{ fontFamily: FD, fontWeight: 700, fontSize: 12, letterSpacing: ".22em", color: FG4, fontVariantNumeric: "tabular-nums" }}>{String(i + 1).padStart(2, "0")}</span>
+                  <span style={{ fontFamily: FD, fontWeight: 700, fontStretch: "115%", fontVariationSettings: "'wght' 700,'wdth' 115", fontSize: "clamp(17px, 1.85vw, 22px)", letterSpacing: "-.012em", color: FG, lineHeight: 1.2 }}>{m.t}</span>
+                </div>
+              ))}
+            </div>
+            <style>{`@media (max-width: 900px) { .dd-milestones { grid-template-columns: 1fr 1fr !important; } }`}</style>
+          </div>
+        </Reveal>
+
+        {/* 4. Стабильность и инциденты — color-coded */}
         <Reveal delay={0.1}>
-          <div style={{ marginTop: "clamp(20px, 2.4vw, 30px)", padding: "clamp(24px, 2.8vw, 36px)", borderRadius: 14, border: "1px solid rgba(204,255,0,.28)", background: "linear-gradient(135deg, rgba(204,255,0,.06), rgba(204,255,0,.015) 70%)" }}>
+          <div style={{ marginTop: "clamp(32px, 4vw, 56px)" }}>
+            <h3 style={{ margin: "0 0 clamp(16px, 2vw, 22px)", fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(28px, 3.6vw, 44px)", letterSpacing: "-.025em", lineHeight: 1.02, color: FG }}>
+              Стабильность и <span style={{ color: ACID }}>инциденты</span>
+            </h3>
+            <p style={{ margin: "0 0 clamp(20px, 2.4vw, 28px)", fontFamily: FD, fontWeight: 500, fontSize: "clamp(14px, 1.4vw, 16px)", lineHeight: 1.5, color: FG3 }}>
+              Внешние сбои провайдеров + рост нагрузки от новых фичей. Успешно отражена <b style={{ color: FG }}>атака на инфраструктуру</b> — предыдущее обновление свело действия атакующего к нулю.
+            </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: 10, fontFamily: FD, fontVariantNumeric: "tabular-nums" }}>
+              {[
+                { id: "DEL-324",  severity: "massive", tag: "атака",         title: "Ошибка регистрации" },
+                { id: "KPE-2181", severity: "few",     tag: "сторона Rain",  title: "Проблемы с карточными платежами" },
+                { id: "KPL-1427", severity: "few",     tag: "откат девопс",  title: "Выгрузка из админки" },
+                { id: "KBU-1062", severity: "single",  tag: "исправлено",    title: "3DS на старую почту" },
+                { id: "KBU-1079", severity: "single",  tag: "блокировка",    title: "Прохождение KYC не на себя" },
+                { id: "KBU-1038", severity: "single",  tag: null,            title: "Угон аккаунта" },
+                { id: "KBU-1098", severity: "single",  tag: null,            title: "Компания не попала в Rain" },
+              ].map((it, i) => {
+                const sev = {
+                  massive: { bg: "rgba(224,66,66,.14)", bd: "rgba(224,66,66,.4)",  fg: "#ff6a6a" },
+                  few:     { bg: "rgba(255,178,0,.12)", bd: "rgba(255,178,0,.35)", fg: "#ffb200" },
+                  single:  { bg: "rgba(90,192,111,.10)", bd: "rgba(90,192,111,.32)", fg: "#5ac06f" },
+                }[it.severity];
+                return (
+                  <div key={i} style={{ display: "grid", gridTemplateColumns: "auto 1fr auto", gap: 20, alignItems: "center", padding: "clamp(14px, 1.6vw, 18px) clamp(18px, 2vw, 22px)", borderRadius: 12, background: "rgba(255,255,255,.02)", border: `1px solid ${LINE}` }}>
+                    <span style={{ fontFamily: FD, fontWeight: 700, fontSize: "clamp(13px, 1.35vw, 15px)", letterSpacing: ".05em", color: FG3 }}>{it.id}</span>
+                    <span style={{ fontFamily: FD, fontWeight: 600, fontSize: "clamp(15px, 1.55vw, 18px)", color: FG }}>{it.title}</span>
+                    <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "6px 12px", borderRadius: 999, background: sev.bg, border: `1px solid ${sev.bd}` }}>
+                      <span style={{ width: 8, height: 8, borderRadius: 999, background: sev.fg }} />
+                      <span style={{ fontFamily: FD, fontWeight: 800, fontSize: "clamp(12px, 1.3vw, 14px)", letterSpacing: ".08em", textTransform: "uppercase", color: sev.fg }}>{it.severity}</span>
+                      {it.tag && <span style={{ fontFamily: FD, fontWeight: 500, fontSize: "clamp(12px, 1.25vw, 13px)", color: FG3 }}>· {it.tag}</span>}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </Reveal>
+
+        {/* 5. Автотесты · качество */}
+        <Reveal delay={0.12}>
+          <div style={{ marginTop: "clamp(32px, 4vw, 56px)", padding: "clamp(24px, 2.8vw, 36px)", borderRadius: 14, border: "1px solid rgba(204,255,0,.28)", background: "linear-gradient(135deg, rgba(204,255,0,.06), rgba(204,255,0,.015) 70%)" }}>
             <h3 style={{ margin: 0, fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(18px, 1.8vw, 24px)", letterSpacing: ".04em", textTransform: "uppercase", color: ACID, marginBottom: 20 }}>Автотесты · качество</h3>
             <div className="dd-two-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(16px, 2vw, 26px)" }}>
               <ColBlock title="Что улучшили" items={[
@@ -463,42 +600,36 @@ function DemoDelivery() {
           </div>
         </Reveal>
 
-        {/* Incidents list */}
-        <Reveal delay={0.12}>
-          <div style={{ marginTop: "clamp(20px, 2.4vw, 30px)", padding: "clamp(24px, 2.8vw, 36px)", borderRadius: 14, border: `1px solid ${LINE}`, background: "linear-gradient(165deg, rgba(255,255,255,.04), rgba(255,255,255,.01) 70%)" }}>
-            <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 14, flexWrap: "wrap", marginBottom: 16 }}>
-              <h3 style={{ margin: 0, fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(18px, 1.8vw, 24px)", letterSpacing: ".04em", textTransform: "uppercase", color: FG }}>Стабильность · инциденты</h3>
-              <span style={{ fontFamily: FD, fontWeight: 500, fontSize: 13, color: FG3 }}>сбои провайдеров + рост нагрузки от фичей</span>
-            </div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: 10, fontFamily: FD, fontVariantNumeric: "tabular-nums" }}>
-              {[
-                { id: "DEL-324", scope: "massive · атака", title: "Ошибка регистрации" },
-                { id: "KPE-2181", scope: "few · сторона Rain", title: "Проблемы с карточными платежами" },
-                { id: "KPL-1427", scope: "few · откат девопс", title: "Выгрузка из админки" },
-                { id: "KBU-1062", scope: "single · исправлено", title: "3DS на старую почту" },
-                { id: "KBU-1079", scope: "single · блокировка", title: "Прохождение KYC не на себя" },
-                { id: "KBU-1038", scope: "single", title: "Угон аккаунта" },
-                { id: "KBU-1098", scope: "single", title: "Компания не попала в Rain" },
-              ].map((it, i) => (
-                <div key={i} style={{ display: "grid", gridTemplateColumns: "auto 1fr auto", gap: 16, alignItems: "baseline", padding: "12px 16px", borderRadius: 10, background: "rgba(255,255,255,.02)", border: `1px solid ${LINE}` }}>
-                  <span style={{ fontFamily: FD, fontWeight: 700, fontSize: 13, letterSpacing: ".05em", color: FG3 }}>{it.id}</span>
-                  <span style={{ fontFamily: FD, fontWeight: 600, fontSize: "clamp(13px, 1.35vw, 15px)", color: FG }}>{it.title}</span>
-                  <span style={{ fontFamily: FD, fontWeight: 500, fontSize: 12, color: FG4, textAlign: "right" }}>{it.scope}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </Reveal>
-
-        {/* Pay In stats */}
+        {/* 6. Статистика Pay In */}
         <Reveal delay={0.14}>
-          <div style={{ marginTop: "clamp(20px, 2.4vw, 30px)", padding: "clamp(24px, 2.8vw, 36px)", borderRadius: 14, border: `1px solid ${LINE}`, background: "linear-gradient(165deg, rgba(255,255,255,.06), rgba(255,255,255,.015) 70%)" }}>
-            <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 14, flexWrap: "wrap", marginBottom: 20 }}>
-              <h3 style={{ margin: 0, fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(18px, 1.8vw, 24px)", letterSpacing: ".04em", textTransform: "uppercase", color: FG }}>Статистика Pay In · Pay Out</h3>
-            </div>
-            <div className="dd-two-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(14px, 1.8vw, 22px)" }}>
-              <div style={{ padding: "clamp(18px, 2vw, 24px)", borderRadius: 12, border: `1px solid ${LINE}`, background: "rgba(255,255,255,.02)" }}>
-                <div style={{ fontFamily: FD, fontWeight: 700, fontSize: 11, letterSpacing: ".22em", textTransform: "uppercase", color: FG4, marginBottom: 14 }}>Pay In · каналы</div>
+          <div style={{ marginTop: "clamp(32px, 4vw, 56px)" }}>
+            <h3 style={{ margin: "0 0 clamp(16px, 2vw, 22px)", fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(28px, 3.6vw, 44px)", letterSpacing: "-.025em", lineHeight: 1.02, color: FG }}>
+              Статистика <span style={{ color: ACID }}>Pay In</span>
+            </h3>
+            <div className="dd-two-col" style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: "clamp(16px, 2vw, 24px)", alignItems: "start" }}>
+              {/* Overall stats table */}
+              <div style={{ borderRadius: 14, border: `1px solid ${LINE}`, background: "linear-gradient(165deg, rgba(255,255,255,.04), rgba(255,255,255,.01) 70%)", overflow: "hidden" }}>
+                <div style={{ padding: "16px 22px", borderBottom: `1px solid ${LINE}`, fontFamily: FD, fontWeight: 700, fontSize: 12, letterSpacing: ".22em", textTransform: "uppercase", color: FG4 }}>Общая статистика · август</div>
+                <div style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr", fontFamily: FD, fontVariantNumeric: "tabular-nums" }}>
+                  {[
+                    { k: "Всего транзакций", v: "121" },
+                    { k: "Уникальных пользователей", v: "61" },
+                    { k: "Общий объём", v: "$56 073.15" },
+                    { k: "Средний депозит (на транзакцию)", v: "$463.41", accent: true },
+                    { k: "Средний объём на пользователя", v: "≈ $919.24" },
+                  ].map((r, i) => (
+                    <React.Fragment key={i}>
+                      <div style={{ padding: "clamp(14px, 1.6vw, 18px) 22px", fontFamily: FD, fontWeight: r.accent ? 700 : 500, fontSize: "clamp(14px, 1.45vw, 16px)", color: r.accent ? FG : FG2, borderTop: `1px solid ${LINE}`, lineHeight: 1.4 }}>{r.k}</div>
+                      <div style={{ padding: "clamp(14px, 1.6vw, 18px) 22px", fontFamily: FD, fontWeight: 800, fontSize: "clamp(15px, 1.55vw, 18px)", color: r.accent ? ACID : FG, textAlign: "right", borderTop: `1px solid ${LINE}` }}>{r.v}</div>
+                    </React.Fragment>
+                  ))}
+                </div>
+                <div style={{ padding: "12px 22px", borderTop: `1px solid ${LINE}`, background: "rgba(255,255,255,.02)", fontFamily: FD, fontWeight: 500, fontSize: 12, color: FG4 }}>~2 транзакции на юзера</div>
+              </div>
+
+              {/* Channels bar chart */}
+              <div style={{ padding: "clamp(18px, 2vw, 24px)", borderRadius: 14, border: `1px solid ${LINE}`, background: "linear-gradient(165deg, rgba(255,255,255,.04), rgba(255,255,255,.01) 70%)" }}>
+                <div style={{ fontFamily: FD, fontWeight: 700, fontSize: 11, letterSpacing: ".22em", textTransform: "uppercase", color: FG4, marginBottom: 14 }}>Каналы · users</div>
                 {[
                   { k: "SEPA", v: 61, hi: true },
                   { k: "ACH", v: 29 },
@@ -508,7 +639,7 @@ function DemoDelivery() {
                 ].map((r, i) => {
                   const max = 61;
                   return (
-                    <div key={i} style={{ display: "grid", gridTemplateColumns: "120px 1fr auto", gap: 12, alignItems: "center", padding: "8px 0", borderTop: i > 0 ? `1px solid ${LINE}` : "none" }}>
+                    <div key={i} style={{ display: "grid", gridTemplateColumns: "140px 1fr auto", gap: 14, alignItems: "center", padding: "10px 0", borderTop: i > 0 ? `1px solid ${LINE}` : "none" }}>
                       <span style={{ fontFamily: FD, fontWeight: 700, fontSize: 14, color: r.hi ? ACID : FG }}>{r.k}</span>
                       <div style={{ height: 10, background: "rgba(255,255,255,.04)", borderRadius: 6, overflow: "hidden" }}>
                         <div style={{ height: "100%", width: `${(r.v/max)*100}%`, background: r.hi ? ACID : "#4a90e2" }} />
@@ -518,10 +649,34 @@ function DemoDelivery() {
                   );
                 })}
               </div>
-              <div style={{ padding: "clamp(18px, 2vw, 24px)", borderRadius: 12, border: `1px solid ${LINE}`, background: "rgba(255,255,255,.02)", display: "flex", flexDirection: "column", gap: 12 }}>
-                <div style={{ fontFamily: FD, fontWeight: 700, fontSize: 11, letterSpacing: ".22em", textTransform: "uppercase", color: FG4 }}>Скриншоты статистики</div>
-                <img src="assets/notion-aug/delivery-payin-stats.png" alt="Pay In stats" data-lightbox-src="assets/notion-aug/delivery-payin-stats.png" data-lightbox-cap="Pay In · статистика" style={{ width: "100%", height: "auto", borderRadius: 8, cursor: "zoom-in", display: "block", border: `1px solid ${LINE}` }} />
-                <img src="assets/notion-aug/delivery-due-stats.png" alt="DUE stats" data-lightbox-src="assets/notion-aug/delivery-due-stats.png" data-lightbox-cap="Pay Out DUE · статистика" style={{ width: "100%", height: "auto", borderRadius: 8, cursor: "zoom-in", display: "block", border: `1px solid ${LINE}` }} />
+            </div>
+          </div>
+        </Reveal>
+
+        {/* 7. DUE funnel */}
+        <Reveal delay={0.16}>
+          <div style={{ marginTop: "clamp(32px, 4vw, 56px)" }}>
+            <h3 style={{ margin: "0 0 clamp(16px, 2vw, 22px)", fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(28px, 3.6vw, 44px)", letterSpacing: "-.025em", lineHeight: 1.02, color: FG }}>
+              DUE · <span style={{ color: ACID }}>воронка активации</span>
+            </h3>
+            <div style={{ borderRadius: 14, border: `1px solid ${LINE}`, background: "linear-gradient(165deg, rgba(255,255,255,.04), rgba(255,255,255,.01) 70%)", overflow: "hidden" }}>
+              <div style={{ display: "grid", gridTemplateColumns: "1.6fr .8fr .8fr .8fr", fontFamily: FD, fontVariantNumeric: "tabular-nums" }}>
+                {["Шаг", "Кол-во польз.", "% от начавших POA", "% от предыдущего шага"].map((h, i) => (
+                  <div key={i} style={{ padding: "16px 22px", fontFamily: FD, fontWeight: 700, fontSize: 12, letterSpacing: ".2em", textTransform: "uppercase", color: FG4, textAlign: i === 0 ? "left" : "right", borderBottom: `1px solid ${LINE}`, background: "rgba(255,255,255,.02)" }}>{h}</div>
+                ))}
+                {[
+                  { k: "1. Начали POA", n: "813", p1: "100%", p2: "—" },
+                  { k: "2. Прошли POA (APPROVED)", n: "520", p1: "64%", p2: "64%" },
+                  { k: "3. Получили VA (Due approved)", n: "401", p1: "49%", p2: "77%" },
+                  { k: "4. Сделали Payin-транзакцию (любую, PAYIN)", n: "100", p1: "12%", p2: "25%", accent: true },
+                ].map((r, i) => (
+                  <React.Fragment key={i}>
+                    <div style={{ padding: "clamp(14px, 1.6vw, 18px) 22px", fontFamily: FD, fontWeight: r.accent ? 700 : 600, fontSize: "clamp(14px, 1.45vw, 16px)", color: r.accent ? ACID : FG, borderTop: `1px solid ${LINE}` }}>{r.k}</div>
+                    <div style={{ padding: "clamp(14px, 1.6vw, 18px) 22px", fontFamily: FD, fontWeight: 800, fontSize: "clamp(15px, 1.55vw, 18px)", color: r.accent ? ACID : FG, textAlign: "right", borderTop: `1px solid ${LINE}` }}>{r.n}</div>
+                    <div style={{ padding: "clamp(14px, 1.6vw, 18px) 22px", fontFamily: FD, fontWeight: 700, fontSize: "clamp(14px, 1.45vw, 16px)", color: r.accent ? ACID : FG2, textAlign: "right", borderTop: `1px solid ${LINE}` }}>{r.p1}</div>
+                    <div style={{ padding: "clamp(14px, 1.6vw, 18px) 22px", fontFamily: FD, fontWeight: 700, fontSize: "clamp(14px, 1.45vw, 16px)", color: r.accent ? ACID : FG2, textAlign: "right", borderTop: `1px solid ${LINE}` }}>{r.p2}</div>
+                  </React.Fragment>
+                ))}
               </div>
             </div>
           </div>
@@ -531,6 +686,7 @@ function DemoDelivery() {
     </React.Fragment>
   );
 }
+
 
 /* ==============================================================
    06 · MARKETING
