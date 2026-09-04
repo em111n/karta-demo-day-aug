@@ -711,8 +711,8 @@ function DemoMarketing() {
           <div style={{ marginTop: "clamp(24px, 3vw, 40px)", padding: "clamp(24px, 3vw, 40px)", borderRadius: 14, border: `1px solid ${LINE}`, background: "linear-gradient(165deg, rgba(255,255,255,.04), rgba(255,255,255,.01) 70%)" }}>
             <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 14, flexWrap: "wrap", marginBottom: "clamp(24px, 3vw, 36px)" }}>
               <div>
-                <span style={{ display: "block", fontFamily: FD, fontWeight: 700, fontSize: 11, letterSpacing: ".22em", textTransform: "uppercase", color: ACID, marginBottom: 8 }}>GTV new users</span>
-                <h4 style={{ margin: 0, fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(28px, 3.4vw, 40px)", letterSpacing: "-.025em", lineHeight: .95, color: FG }}>Трек за 4 месяца</h4>
+                <h4 style={{ margin: 0, fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(36px, 4.6vw, 60px)", letterSpacing: "-.03em", lineHeight: .95, textTransform: "uppercase", color: FG }}>GTV <span style={{ color: ACID }}>new users</span></h4>
+                <span style={{ display: "block", marginTop: 10, fontFamily: FD, fontWeight: 600, fontSize: 11, letterSpacing: ".22em", textTransform: "uppercase", color: FG4 }}>Трек за 4 месяца</span>
               </div>
               <span style={{ fontFamily: FD, fontWeight: 500, fontSize: "clamp(13px, 1.35vw, 15px)", color: FG3, textAlign: "right" }}>Август — <b style={{ color: ACID }}>второй за всю историю</b> по незакрытой когорте</span>
             </div>
