@@ -1518,7 +1518,7 @@ function DemoSupport() {
   ];
   const b2b = [
     ["Time to first response", "2m 6s", "2m 33s"],
-    ["Inquiries handled",      "171",   "171"],
+    ["Inquiries handled",      "171",   "295"],
     ["CSAT",                    "100%", "90%"],
   ];
   const renderTable = (rows, accent) => (
