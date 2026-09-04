@@ -991,7 +991,10 @@ function VideoAdTile({ item, onOpen }) {
   };
   return (
     <button onClick={onOpen} aria-label={`Play · ${item.label}`}
-      style={{ position: "relative", width: "100%", aspectRatio: item.aspectRatio || "4 / 5", borderRadius: 14, border: `1px solid ${item.accent ? "rgba(204,255,0,.32)" : LINE}`, background: "#0a0a0a", cursor: "pointer", overflow: "hidden", padding: 0, color: FG, display: "block" }}>
+      className="dd-video-tile"
+      style={{ position: "relative", width: "100%", aspectRatio: item.aspectRatio || "4 / 5", borderRadius: 14, border: `1px solid ${item.accent ? "rgba(204,255,0,.32)" : LINE}`, background: "#0a0a0a", cursor: "pointer", overflow: "hidden", padding: 0, color: FG, display: "block", boxShadow: item.accent ? "0 0 40px rgba(204,255,0,.22), 0 0 80px rgba(204,255,0,.08)" : "0 0 30px rgba(204,255,0,.14), 0 0 60px rgba(204,255,0,.05)", transition: "box-shadow .25s, transform .25s" }}
+      onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "0 0 55px rgba(204,255,0,.32), 0 0 110px rgba(204,255,0,.14)"; e.currentTarget.style.transform = "translateY(-2px)"; }}
+      onMouseLeave={(e) => { e.currentTarget.style.boxShadow = item.accent ? "0 0 40px rgba(204,255,0,.22), 0 0 80px rgba(204,255,0,.08)" : "0 0 30px rgba(204,255,0,.14), 0 0 60px rgba(204,255,0,.05)"; e.currentTarget.style.transform = "translateY(0)"; }}>
       <video ref={vRef} src={item.src} preload="auto" muted playsInline
         onLoadedData={capturePreviewFrame} onCanPlay={capturePreviewFrame}
         style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", pointerEvents: "none" }} />
@@ -1012,6 +1015,7 @@ function VideoAdTile({ item, onOpen }) {
 
 function VideoAdsRow({ items, columns = 3 }) {
   const [openIdx, setOpenIdx] = uS(-1);
+  const modalRef = uR(null);
   const isOpen = openIdx >= 0;
   const prev = () => setOpenIdx((i) => (i - 1 + items.length) % items.length);
   const next = () => setOpenIdx((i) => (i + 1) % items.length);
@@ -1025,8 +1029,32 @@ function VideoAdsRow({ items, columns = 3 }) {
       else if (e.key === "ArrowLeft") prev();
       else if (e.key === "ArrowRight") next();
     };
+    const onFsChange = () => {
+      if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+        setOpenIdx(-1);
+      }
+    };
     window.addEventListener("keydown", onKey);
-    return () => { document.body.style.overflow = savedOverflow; window.removeEventListener("keydown", onKey); };
+    document.addEventListener("fullscreenchange", onFsChange);
+    document.addEventListener("webkitfullscreenchange", onFsChange);
+    // Enter browser fullscreen once modal is mounted
+    const raf = requestAnimationFrame(() => {
+      const el = modalRef.current;
+      if (!el) return;
+      const req = el.requestFullscreen || el.webkitRequestFullscreen;
+      if (req) { try { req.call(el); } catch (_) {} }
+    });
+    return () => {
+      document.body.style.overflow = savedOverflow;
+      window.removeEventListener("keydown", onKey);
+      document.removeEventListener("fullscreenchange", onFsChange);
+      document.removeEventListener("webkitfullscreenchange", onFsChange);
+      cancelAnimationFrame(raf);
+      if (document.fullscreenElement || document.webkitFullscreenElement) {
+        const exit = document.exitFullscreen || document.webkitExitFullscreen;
+        if (exit) { try { exit.call(document); } catch (_) {} }
+      }
+    };
   }, [isOpen]);
 
   const cur = isOpen ? items[openIdx] : null;
@@ -1040,8 +1068,8 @@ function VideoAdsRow({ items, columns = 3 }) {
       </div>
 
       {isOpen && (
-        <div onClick={() => setOpenIdx(-1)}
-          style={{ position: "fixed", inset: 0, zIndex: 100, background: "rgba(0,0,0,.94)", display: "flex", flexDirection: "column", padding: "clamp(18px, 2vw, 28px)", gap: 12 }}>
+        <div ref={modalRef} onClick={() => setOpenIdx(-1)}
+          style={{ position: "fixed", inset: 0, zIndex: 100, background: "radial-gradient(80% 60% at 50% 50%, rgba(204,255,0,.08), rgba(0,0,0,.96) 65%)", display: "flex", flexDirection: "column", padding: "clamp(18px, 2vw, 28px)", gap: 12 }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, color: FG }}>
             <span style={{ fontFamily: FD, fontWeight: 700, fontSize: 12, letterSpacing: ".22em", textTransform: "uppercase", color: FG3 }}>{String(openIdx + 1).padStart(2, "0")} · {cur.label}</span>
             <button onClick={(e) => { e.stopPropagation(); setOpenIdx(-1); }}
@@ -1057,7 +1085,7 @@ function VideoAdsRow({ items, columns = 3 }) {
               <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke={FG} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15,6 9,12 15,18" /></svg>
             </button>
             <video key={cur.src} src={cur.src} autoPlay loop playsInline controls
-              style={{ maxWidth: "min(100%, 1400px)", maxHeight: "100%", width: "auto", height: "auto", objectFit: "contain", borderRadius: 10, display: "block" }} />
+              style={{ maxWidth: "min(100%, 1400px)", maxHeight: "100%", width: "auto", height: "auto", objectFit: "contain", borderRadius: 10, display: "block", boxShadow: "0 0 60px 8px rgba(204,255,0,.28), 0 0 120px 20px rgba(204,255,0,.12), 0 20px 50px rgba(0,0,0,.6)" }} />
             <button onClick={(e) => { e.stopPropagation(); next(); }} aria-label="Next"
               style={{ position: "absolute", right: "clamp(6px, 1.5vw, 24px)", top: "50%", transform: "translateY(-50%)", zIndex: 2, width: 56, height: 56, borderRadius: "50%", background: "rgba(255,255,255,.08)", border: `1px solid ${LINE}`, color: FG, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", backdropFilter: "blur(8px)", transition: "background .18s" }}
               onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(255,255,255,.16)"; }}
