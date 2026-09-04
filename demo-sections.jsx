@@ -691,7 +691,7 @@ function DemoDelivery() {
             </h3>
             <VideoAdsRow columns={2} items={[
               { src: "assets/demo-aug/payin.webm",  label: "PayIn",  aspectRatio: "16 / 9", accent: true },
-              { src: "assets/demo-aug/payout.webm", label: "PayOut", aspectRatio: "16 / 9" },
+              { src: "assets/demo-aug/payout.mp4", label: "PayOut", aspectRatio: "16 / 9" },
             ]} />
           </div>
         </Reveal>
