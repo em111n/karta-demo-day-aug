@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "karta-demo-day-jul",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8942", "--directory", "/Users/em1n/aa Claude/karta-demo-day-jul"],
+      "port": 8942,
+      "url": "http://localhost:8942"
+    }
+  ]
+}
