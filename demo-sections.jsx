@@ -1382,11 +1382,12 @@ function DemoDesign() {
           <h2 style={{ margin: "0 0 clamp(24px, 2.8vw, 40px)", fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(34px, 4.6vw, 60px)", letterSpacing: "-.03em", lineHeight: 1.02, color: FG }}>
             Video ADs
           </h2>
-          <VideoAdsRow columns={4} items={[
-            { src: "assets/vad-aug/service-costs.mp4", label: "Service costs", aspectRatio: "9 / 16", accent: true },
-            { src: "assets/vad-aug/cortizol.mp4",      label: "Cortizol",      aspectRatio: "9 / 16" },
-            { src: "assets/vad-aug/topup.mp4",         label: "TopUp",         aspectRatio: "9 / 16" },
-            { src: "assets/vad-aug/easypay.mp4",       label: "Easy Pay",      aspectRatio: "9 / 16" },
+          <VideoAdsRow columns={5} items={[
+            { src: "assets/vad-aug/service-costs.mp4",     label: "Service costs",    aspectRatio: "9 / 16", accent: true },
+            { src: "assets/vad-aug/cortizol.mp4",          label: "Cortizol",         aspectRatio: "9 / 16" },
+            { src: "assets/vad-aug/topup.mp4",             label: "TopUp",            aspectRatio: "9 / 16" },
+            { src: "assets/vad-aug/easypay.mp4",           label: "Easy Pay",         aspectRatio: "9 / 16" },
+            { src: "assets/vad-aug/spend-on-arrival.mp4",  label: "Spend On Arrival", aspectRatio: "9 / 16" },
           ]} />
           <style>{`@media (max-width: 900px) { .dd-video-ads { grid-template-columns: 1fr !important; } }`}</style>
         </div>
