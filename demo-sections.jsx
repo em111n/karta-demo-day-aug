@@ -277,7 +277,7 @@ function DemoContext() {
         <Reveal delay={0.08}>
           <div style={{ marginTop: "clamp(32px, 4vw, 56px)" }}>
             <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 16, flexWrap: "wrap", marginBottom: "clamp(20px, 2.4vw, 32px)" }}>
-              <h2 style={{ margin: 0, fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(48px, 6.4vw, 88px)", letterSpacing: "-.035em", lineHeight: .95, color: FG }}>
+              <h2 style={{ margin: 0, fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(34px, 4.6vw, 60px)", letterSpacing: "-.035em", lineHeight: .95, color: FG }}>
                 Roadmap · <span style={{ color: ACID }}>Q3</span>
               </h2>
               <span style={{ fontFamily: FD, fontWeight: 500, fontSize: "clamp(13px, 1.4vw, 16px)", color: FG3, paddingBottom: 12 }}>согласовано с командой</span>
@@ -421,7 +421,7 @@ function DemoProduct() {
         {/* Что дальше — крупный основной блок */}
         <Reveal delay={0.12}>
           <div style={{ marginTop: "clamp(32px, 4vw, 56px)" }}>
-            <h2 style={{ margin: "0 0 clamp(20px, 2.4vw, 32px)", fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(48px, 6.4vw, 88px)", letterSpacing: "-.035em", lineHeight: .95, color: FG }}>
+            <h2 style={{ margin: "0 0 clamp(20px, 2.4vw, 32px)", fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(34px, 4.6vw, 60px)", letterSpacing: "-.035em", lineHeight: .95, color: FG }}>
               Что <span style={{ color: ACID }}>дальше</span>
             </h2>
             <div className="dd-two-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(16px, 2vw, 24px)" }}>
@@ -1217,7 +1217,7 @@ function DemoDesign() {
 
         {/* ===== Creative Design ===== */}
         <div style={{ marginTop: "clamp(56px, 7vw, 100px)", paddingTop: "clamp(48px, 6vw, 88px)", borderTop: `1px solid ${LINE}` }}>
-          <h2 style={{ margin: "0 0 clamp(24px, 2.8vw, 40px)", fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(36px, 5vw, 72px)", letterSpacing: "-.03em", lineHeight: 1.02, color: FG }}>
+          <h2 style={{ margin: "0 0 clamp(24px, 2.8vw, 40px)", fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(34px, 4.6vw, 60px)", letterSpacing: "-.03em", lineHeight: 1.02, color: FG }}>
             Creative Design
           </h2>
           <div style={{ display: "flex", flexDirection: "column", gap: "clamp(16px, 2vw, 26px)" }}>
@@ -1234,7 +1234,7 @@ function DemoDesign() {
 
         {/* ===== Video ADs ===== */}
         <div style={{ marginTop: "clamp(56px, 7vw, 100px)", paddingTop: "clamp(48px, 6vw, 88px)", borderTop: `1px solid ${LINE}` }}>
-          <h2 style={{ margin: "0 0 clamp(24px, 2.8vw, 40px)", fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(36px, 5vw, 72px)", letterSpacing: "-.03em", lineHeight: 1.02, color: FG }}>
+          <h2 style={{ margin: "0 0 clamp(24px, 2.8vw, 40px)", fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(34px, 4.6vw, 60px)", letterSpacing: "-.03em", lineHeight: 1.02, color: FG }}>
             Video ADs
           </h2>
           <VideoAdsRow items={[
@@ -1346,7 +1346,7 @@ function _DemoDesign_hidden_July() {
 
         {/* ===== PRODUCT DESIGN — separate block ===== */}
         <div style={{ marginTop: "clamp(48px, 6vw, 90px)", paddingTop: "clamp(60px, 8vw, 120px)", borderTop: `1px solid ${LINE}` }}>
-          <h2 style={{ margin: "0 0 clamp(20px, 2.4vw, 32px)", fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(36px, 5vw, 72px)", letterSpacing: "-.03em", lineHeight: 1.02, color: FG }}>
+          <h2 style={{ margin: "0 0 clamp(20px, 2.4vw, 32px)", fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(34px, 4.6vw, 60px)", letterSpacing: "-.03em", lineHeight: 1.02, color: FG }}>
             Product Design <span style={{ color: FG4 }}>Upd.</span>
           </h2>
           <ProductDesignBlock />
@@ -1354,7 +1354,7 @@ function _DemoDesign_hidden_July() {
 
         {/* ===== CREATIVE DESIGN — separate block ===== */}
         <div style={{ marginTop: "clamp(48px, 6vw, 90px)", paddingTop: "clamp(60px, 8vw, 120px)", borderTop: `1px solid ${LINE}` }}>
-          <h2 style={{ margin: "0 0 clamp(24px, 2.8vw, 40px)", fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(36px, 5vw, 72px)", letterSpacing: "-.03em", lineHeight: 1.02, color: FG }}>
+          <h2 style={{ margin: "0 0 clamp(24px, 2.8vw, 40px)", fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(34px, 4.6vw, 60px)", letterSpacing: "-.03em", lineHeight: 1.02, color: FG }}>
             Creative Design
           </h2>
           <div style={{ display: "flex", flexDirection: "column", gap: "clamp(16px, 2vw, 26px)" }}>
@@ -1391,7 +1391,7 @@ function _DemoDesign_hidden_July() {
 
         {/* ===== KARTA WEBSITE — separate block ===== */}
         <div style={{ marginTop: "clamp(48px, 6vw, 90px)", paddingTop: "clamp(60px, 8vw, 120px)", borderTop: `1px solid ${LINE}` }}>
-          <h2 style={{ margin: "0 0 clamp(8px, 1vw, 14px)", fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(36px, 5vw, 72px)", letterSpacing: "-.03em", lineHeight: 1.02, color: FG }}>
+          <h2 style={{ margin: "0 0 clamp(8px, 1vw, 14px)", fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(34px, 4.6vw, 60px)", letterSpacing: "-.03em", lineHeight: 1.02, color: FG }}>
             Karta Website <span style={{ color: FG4 }}>(GRI)</span>
           </h2>
           <p style={{ margin: "0 0 clamp(24px, 2.8vw, 40px)", fontFamily: FD, fontWeight: 500, fontSize: "clamp(16px, 1.7vw, 22px)", lineHeight: 1.4, color: FG3, maxWidth: 900 }}>
