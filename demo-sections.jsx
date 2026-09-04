@@ -706,14 +706,49 @@ function DemoMarketing() {
           <StatBlock label="Клиент · LTV" value="$1 185" sub="максимум за 15 месяцев" />
         </div>
 
-        {/* GTV chart from Notion */}
+        {/* GTV chart · JSX */}
         <Reveal delay={0.06}>
-          <div style={{ marginTop: "clamp(20px, 2.4vw, 30px)", padding: "clamp(20px, 2.4vw, 28px)", borderRadius: 14, border: `1px solid ${LINE}`, background: "linear-gradient(165deg, rgba(255,255,255,.04), rgba(255,255,255,.01) 70%)" }}>
-            <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 14, flexWrap: "wrap", marginBottom: 12 }}>
-              <h4 style={{ margin: 0, fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(18px, 1.8vw, 24px)", letterSpacing: "-.012em", color: FG }}>GTV new users · трек за 3 месяца</h4>
-              <span style={{ fontFamily: FD, fontWeight: 500, fontSize: 13, color: FG3 }}>август — второй за всю историю по незакрытой когорте</span>
+          <div style={{ marginTop: "clamp(24px, 3vw, 40px)", padding: "clamp(24px, 3vw, 40px)", borderRadius: 14, border: `1px solid ${LINE}`, background: "linear-gradient(165deg, rgba(255,255,255,.04), rgba(255,255,255,.01) 70%)" }}>
+            <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 14, flexWrap: "wrap", marginBottom: "clamp(24px, 3vw, 36px)" }}>
+              <div>
+                <span style={{ display: "block", fontFamily: FD, fontWeight: 700, fontSize: 11, letterSpacing: ".22em", textTransform: "uppercase", color: ACID, marginBottom: 8 }}>GTV new users</span>
+                <h4 style={{ margin: 0, fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(28px, 3.4vw, 40px)", letterSpacing: "-.025em", lineHeight: .95, color: FG }}>Трек за 4 месяца</h4>
+              </div>
+              <span style={{ fontFamily: FD, fontWeight: 500, fontSize: "clamp(13px, 1.35vw, 15px)", color: FG3, textAlign: "right" }}>Август — <b style={{ color: ACID }}>второй за всю историю</b> по незакрытой когорте</span>
             </div>
-            <img src="assets/notion-aug/marketing-gtv-new-users.png" alt="GTV new users chart" data-lightbox-src="assets/notion-aug/marketing-gtv-new-users.png" data-lightbox-cap="GTV новых пользователей · трек" style={{ width: "100%", height: "auto", borderRadius: 10, cursor: "zoom-in", display: "block", border: `1px solid ${LINE}` }} />
+
+            {(() => {
+              const rows = [
+                { m: "май 26",  users: "9 712",  usersN: 9712,  gtv: "$407K",  gtvN: 407 },
+                { m: "июн 26",  users: "20 563", usersN: 20563, gtv: "$460K",  gtvN: 460 },
+                { m: "июл 26",  users: "12 026", usersN: 12026, gtv: "$823K",  gtvN: 823 },
+                { m: "авг 26",  users: "15 843", usersN: 15843, gtv: "$1.13M", gtvN: 1130, hi: true },
+              ];
+              const maxG = 1130;
+              return (
+                <div style={{ display: "flex", flexDirection: "column", gap: "clamp(14px, 1.6vw, 20px)" }}>
+                  {rows.map((r, i) => (
+                    <div key={i} style={{ display: "grid", gridTemplateColumns: "minmax(100px, 140px) minmax(120px, 180px) 1fr auto", gap: "clamp(14px, 1.8vw, 24px)", alignItems: "center", fontFamily: FD, fontVariantNumeric: "tabular-nums" }} className="dd-gtv-row">
+                      {/* Month */}
+                      <span style={{ fontFamily: FD, fontWeight: 800, fontStretch: "115%", fontVariationSettings: "'wght' 800,'wdth' 115", fontSize: "clamp(20px, 2.2vw, 28px)", letterSpacing: "-.02em", color: r.hi ? ACID : FG, textTransform: "lowercase" }}>{r.m}</span>
+                      {/* Users */}
+                      <div>
+                        <span style={{ display: "block", fontFamily: FD, fontWeight: 500, fontSize: 10, letterSpacing: ".22em", textTransform: "uppercase", color: FG4, marginBottom: 4 }}>Users</span>
+                        <span style={{ fontFamily: FD, fontWeight: 700, fontSize: "clamp(15px, 1.6vw, 18px)", color: FG }}>{r.users}</span>
+                      </div>
+                      {/* Bar */}
+                      <div style={{ height: "clamp(28px, 3vw, 36px)", background: "rgba(255,255,255,.03)", borderRadius: 6, overflow: "hidden", border: `1px solid ${LINE}` }}>
+                        <div style={{ height: "100%", width: `${(r.gtvN / maxG) * 100}%`, background: r.hi ? ACID : "#a78bfa", borderRadius: 5, transition: "width .6s cubic-bezier(.44,0,.16,1)" }} />
+                      </div>
+                      {/* GTV pill */}
+                      <span style={{ padding: "clamp(10px, 1.2vw, 14px) clamp(16px, 2vw, 22px)", borderRadius: 999, background: r.hi ? ACID : "rgba(255,255,255,.08)", color: r.hi ? "#0a0a0a" : FG, fontFamily: FD, fontWeight: 800, fontStretch: "115%", fontVariationSettings: "'wght' 800,'wdth' 115", fontSize: "clamp(18px, 2vw, 24px)", letterSpacing: "-.008em", minWidth: "clamp(90px, 10vw, 130px)", textAlign: "center", border: r.hi ? "none" : `1px solid ${LINE}` }}>{r.gtv}</span>
+                    </div>
+                  ))}
+                </div>
+              );
+            })()}
+
+            <style>{`@media (max-width: 720px) { .dd-gtv-row { grid-template-columns: 1fr 1fr !important; gap: 12px !important; } .dd-gtv-row > *:nth-child(3) { grid-column: 1 / -1 !important; } }`}</style>
           </div>
         </Reveal>
 
