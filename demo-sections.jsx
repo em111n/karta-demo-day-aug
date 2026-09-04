@@ -1253,17 +1253,42 @@ function DemoDesign() {
       <Section tightTop dataLabel="06 Design">
         <ProductDesignBlock />
 
+        {/* ===== Meet Visa Platinum & Infinity ===== */}
+        <div style={{ marginTop: "clamp(56px, 7vw, 100px)", paddingTop: "clamp(48px, 6vw, 88px)", borderTop: `1px solid ${LINE}` }}>
+          <h2 style={{ margin: "0 0 clamp(24px, 2.8vw, 40px)", fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(34px, 4.6vw, 60px)", letterSpacing: "-.03em", lineHeight: 1.02, color: FG }}>
+            Meet <span style={{ color: ACID }}>Visa Platinum & Infinity</span>
+          </h2>
+          <img src="assets/design-aug/cards.png" alt="Visa Platinum & Infinity" data-lightbox-src="assets/design-aug/cards.png" data-lightbox-cap="Visa Platinum & Infinity" style={{ width: "100%", height: "auto", borderRadius: 12, cursor: "zoom-in", display: "block" }} />
+        </div>
+
+        {/* ===== Physical Cards Package ===== */}
+        <div style={{ marginTop: "clamp(56px, 7vw, 100px)", paddingTop: "clamp(48px, 6vw, 88px)", borderTop: `1px solid ${LINE}` }}>
+          <h2 style={{ margin: "0 0 clamp(24px, 2.8vw, 40px)", fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(34px, 4.6vw, 60px)", letterSpacing: "-.03em", lineHeight: 1.02, color: FG }}>
+            Physical Cards <span style={{ color: ACID }}>Package</span>
+          </h2>
+          <div style={{ display: "flex", flexDirection: "column", gap: "clamp(16px, 2vw, 26px)" }}>
+            {["package-1.png","package-2.png"].map((f, i) => (
+              <img key={i}
+                src={`assets/design-aug/${f}`}
+                alt={`Physical Cards Package ${i + 1}`}
+                data-lightbox-src={`assets/design-aug/${f}`}
+                data-lightbox-cap={`Physical Cards Package · ${i + 1}`}
+                style={{ width: "100%", height: "auto", borderRadius: 12, cursor: "zoom-in", display: "block" }} />
+            ))}
+          </div>
+        </div>
+
         {/* ===== Creative Design ===== */}
         <div style={{ marginTop: "clamp(56px, 7vw, 100px)", paddingTop: "clamp(48px, 6vw, 88px)", borderTop: `1px solid ${LINE}` }}>
           <h2 style={{ margin: "0 0 clamp(24px, 2.8vw, 40px)", fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(34px, 4.6vw, 60px)", letterSpacing: "-.03em", lineHeight: 1.02, color: FG }}>
-            Creative Design
+            Creative <span style={{ color: ACID }}>Design</span>
           </h2>
           <div style={{ display: "flex", flexDirection: "column", gap: "clamp(16px, 2vw, 26px)" }}>
-            {["creative-1.png","creative-2.png","creative-3.png","creative-4.png"].map((f, i) => (
+            {["creative-1.png","creative-2.png"].map((f, i) => (
               <img key={i}
-                src={`assets/creative-jul/${f}`}
+                src={`assets/design-aug/${f}`}
                 alt={`Creative ${i + 1}`}
-                data-lightbox-src={`assets/creative-jul/${f}`}
+                data-lightbox-src={`assets/design-aug/${f}`}
                 data-lightbox-cap={`Creative · ${i + 1}`}
                 style={{ width: "100%", height: "auto", borderRadius: 12, cursor: "zoom-in", display: "block" }} />
             ))}
