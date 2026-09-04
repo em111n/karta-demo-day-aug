@@ -374,22 +374,23 @@ function DemoProduct() {
       <Section tightTop dataLabel="03 Product">
         {/* GTV hero block with +3.3% chip */}
         <div style={{ padding: "clamp(24px, 2.8vw, 40px)", borderRadius: 14, border: "1px solid rgba(204,255,0,.28)", background: "linear-gradient(135deg, rgba(204,255,0,.06), rgba(204,255,0,.015) 70%)", display: "flex", flexDirection: "column", gap: "clamp(16px, 2vw, 24px)" }}>
-          <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 16, flexWrap: "wrap" }}>
-            <div>
+          <div className="dd-gtv-row" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(16px, 2vw, 24px)", alignItems: "stretch" }}>
+            <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
               <span style={{ display: "block", fontFamily: FD, fontWeight: 700, fontSize: 11, letterSpacing: ".22em", textTransform: "uppercase", color: ACID, marginBottom: 8 }}>GTV · август</span>
-              <div style={{ display: "flex", alignItems: "baseline", gap: 14, flexWrap: "wrap" }}>
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 14, flexWrap: "wrap" }}>
                 <h3 style={{ margin: 0, fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(48px, 6.4vw, 96px)", letterSpacing: "-.035em", lineHeight: .95, color: FG, fontVariantNumeric: "tabular-nums" }}>$12.24M</h3>
-                <span style={{ padding: "6px 12px", borderRadius: 999, background: ACID, color: "#0a0a0a", fontFamily: FD, fontWeight: 800, fontStretch: "115%", fontVariationSettings: "'wght' 800,'wdth' 115", fontSize: "clamp(14px, 1.5vw, 18px)", letterSpacing: "-.005em" }}>+3.3% MoM</span>
+                <span style={{ marginTop: "clamp(6px, .8vw, 12px)", padding: "8px 16px", borderRadius: 999, background: ACID, color: "#0a0a0a", fontFamily: FD, fontWeight: 800, fontStretch: "115%", fontVariationSettings: "'wght' 800,'wdth' 115", fontSize: "clamp(16px, 1.8vw, 22px)", letterSpacing: "-.005em", lineHeight: 1, whiteSpace: "nowrap" }}>+3.3%</span>
               </div>
               <span style={{ display: "block", marginTop: 8, fontFamily: FD, fontWeight: 500, fontSize: "clamp(13px, 1.35vw, 15px)", color: FG3 }}>цель $24M · 49% плана</span>
             </div>
-            <div style={{ padding: "14px 18px", border: `1px solid ${LINE}`, borderRadius: 12, background: "rgba(255,255,255,.03)", maxWidth: 380 }}>
-              <div style={{ fontFamily: FD, fontWeight: 700, fontSize: 10, letterSpacing: ".2em", textTransform: "uppercase", color: FG4, marginBottom: 6 }}>Годовая цель</div>
-              <div style={{ fontFamily: FD, fontWeight: 700, fontSize: "clamp(14px, 1.45vw, 16px)", lineHeight: 1.45, color: FG2 }}>
+            <div style={{ padding: "clamp(20px, 2.4vw, 28px)", border: `1px solid ${LINE}`, borderRadius: 12, background: "rgba(255,255,255,.03)", display: "flex", flexDirection: "column", justifyContent: "center", gap: 10 }}>
+              <div style={{ fontFamily: FD, fontWeight: 700, fontSize: 11, letterSpacing: ".22em", textTransform: "uppercase", color: FG4 }}>Годовая цель</div>
+              <div style={{ fontFamily: FD, fontWeight: 700, fontStretch: "115%", fontVariationSettings: "'wght' 700,'wdth' 115", fontSize: "clamp(20px, 2.2vw, 28px)", lineHeight: 1.25, letterSpacing: "-.012em", color: FG2 }}>
                 <b style={{ color: FG }}>$55M/мес к декабрю</b> требует <b style={{ color: FG }}>25.8% MoM</b> — отстаём <b style={{ color: ACID }}>на 2 месяца</b>
               </div>
             </div>
           </div>
+          <style>{`@media (max-width: 900px) { .dd-gtv-row { grid-template-columns: 1fr !important; } }`}</style>
           <div style={{ borderTop: "1px solid rgba(204,255,0,.15)" }} />
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "clamp(12px, 1.4vw, 18px)" }}>
             <StatBlock label="Paying users" value="5 984" sub="+1% · было 5 924" />
