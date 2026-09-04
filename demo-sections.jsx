@@ -1538,7 +1538,6 @@ function DemoSupport() {
           { t: "Apple Pay", scope: "B2C", imgs: ["support-applepay-1.png","support-applepay-2.png","support-applepay-3.png"] },
           { t: "Rhino delays", scope: "B2C", imgs: ["support-rhino-delays.png"] },
           { t: "KYC / KYB", scope: "B2C · B2B", imgs: ["support-kyc-kyb-1.png","support-kyc-kyb-2.png","support-kyc-kyb-3.png"] },
-          { t: "Misc chats", scope: "B2C", imgs: ["hr-team.png"] },
           { t: "Positive feedback", scope: "B2C", imgs: ["support-positive-1.png","support-positive-2.png","support-positive-3.png"], accent: true },
         ].map((g, gi) => (
           <Reveal key={gi} delay={0.04 + gi * 0.02}>
