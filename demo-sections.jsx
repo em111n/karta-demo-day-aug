@@ -843,10 +843,10 @@ function DemoMarketing() {
    07 · DESIGN — Product Design sub-block (click-through features)
    ============================================================== */
 const PD_FEATURES = [
-  { title: "Negative Balance",     desc: "Экран заблокированного аккаунта и карты при отрицательном балансе — CTA Top Up to Unlock.", img: "assets/pd-jul/negative-balance.png" },
-  { title: "Referral Code",        desc: "Обновлённая реферальная программа: экран профиля, ввод чужого кода, Invite Friends · Earn Karat.", img: "assets/pd-jul/referral-code.png" },
-  { title: "PayOut Design Review", desc: "Design review новой отправки: 30+ экранов, 60+ замечаний по вёрстке и flow.", img: "assets/pd-jul/payout-review.png" },
-  { title: "24h Offer",            desc: "Кликабельный прототип оффера — открывается на весь экран.", proto: "https://www.figma.com/proto/jxQnH89kRrFtDB5W1yexHy/Karta-Personal?node-id=32889-289546&viewport=-3416%2C-3295%2C0.83&t=2jMe2pPKQgaz0WbV-8&scaling=scale-down&content-scaling=responsive&starting-point-node-id=32889%3A289546&page-id=32092%3A97584&hide-ui=1" },
+  { title: "Hide Balance",                     desc: "Скрытие баланса и приватность — Start hidden + Shake phone to hide & show.",              img:   "assets/pd-aug/hide-balance.png" },
+  { title: "Edit contact (PayOut)",            desc: "Управление контактом и его payment methods — Revolut, Mandiri, EVM wallet, delete flow.",  img:   "assets/pd-aug/edit-contact.png" },
+  { title: "Transaction details",              desc: "Детали транзакции — Share receipt, Repeat transfer, Save wallet to contact.",              img:   "assets/pd-aug/transaction-details.png" },
+  { title: "Share receipt",                    desc: "Запись экрана нового флоу шеринга чека.",                                                 video: "assets/pd-aug/share-receipt.mp4" },
 ];
 function ProductDesignBlock() {
   const [active, setActive] = uS(0);
@@ -928,6 +928,9 @@ function ProductDesignBlock() {
                 Открыть в Figma в новой вкладке →
               </a>
             </React.Fragment>
+          ) : cur.video ? (
+            <video key={cur.video} src={cur.video} autoPlay muted loop playsInline controls
+              style={{ maxWidth: "100%", maxHeight: 620, width: "auto", height: "auto", objectFit: "contain", borderRadius: 10, display: "block" }} />
           ) : cur.img ? (
             <img src={cur.img} alt={cur.title} data-lightbox-src={cur.img} data-lightbox-cap={cur.title}
               style={{ maxWidth: "100%", maxHeight: 620, width: "auto", height: "auto", objectFit: "contain", borderRadius: 10, cursor: "zoom-in" }} />
