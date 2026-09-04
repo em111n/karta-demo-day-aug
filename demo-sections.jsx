@@ -1253,20 +1253,6 @@ function DemoDesign() {
       <Section tightTop dataLabel="06 Design">
         <ProductDesignBlock />
 
-        {/* ===== AI-first Design System (Q3 initiative) ===== */}
-        <div style={{ marginTop: "clamp(56px, 7vw, 100px)", paddingTop: "clamp(48px, 6vw, 88px)", borderTop: `1px solid ${LINE}` }}>
-          <div style={{ display: "flex", alignItems: "baseline", gap: 14, marginBottom: "clamp(16px, 2vw, 24px)" }}>
-            <span style={{ fontFamily: FD, fontWeight: 700, fontSize: "clamp(13px, 1.3vw, 16px)", letterSpacing: ".22em", textTransform: "uppercase", color: ACID }}>Q3 initiative</span>
-          </div>
-          <h2 style={{ margin: "0 0 clamp(20px, 2.4vw, 32px)", fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(32px, 4.4vw, 60px)", letterSpacing: "-.03em", lineHeight: 1.02, color: FG }}>
-            AI-first <span style={{ color: ACID }}>Design System</span>
-          </h2>
-          <p style={{ margin: "0 0 clamp(28px, 3.4vw, 44px)", fontFamily: FD, fontWeight: 500, fontSize: "clamp(20px, 2vw, 26px)", lineHeight: 1.3, color: FG2, maxWidth: 1080 }}>
-            Как сделать Karta Design System понятной для AI и позволить быстро создавать на её основе рабочие интерактивные прототипы?
-          </p>
-          <AiDesignSystemBlock />
-        </div>
-
         {/* ===== Creative Design ===== */}
         <div style={{ marginTop: "clamp(56px, 7vw, 100px)", paddingTop: "clamp(48px, 6vw, 88px)", borderTop: `1px solid ${LINE}` }}>
           <h2 style={{ margin: "0 0 clamp(24px, 2.8vw, 40px)", fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(34px, 4.6vw, 60px)", letterSpacing: "-.03em", lineHeight: 1.02, color: FG }}>
