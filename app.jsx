@@ -76,7 +76,6 @@ function App() {
       <div className="chapter" style={{ position: "relative" }}><DemoDesign /></div>
       <div className="chapter" style={{ position: "relative" }}><DemoSupport /></div>
       <div className="chapter" style={{ position: "relative" }}><DemoHR /></div>
-      <div className="chapter" style={{ position: "relative" }}><DemoOPS /></div>
       <div className="chapter" style={{ position: "relative" }}><DemoQA /></div>
       <DemoOutro />
       <Lightbox />

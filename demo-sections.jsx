@@ -1845,10 +1845,10 @@ function DemoOPS() {
 function DemoQA() {
   return (
     <React.Fragment>
-      <SectionHero id="qa" num="10" kicker="q&a" align="left" glow
+      <SectionHero id="qa" num="09" kicker="q&a" align="left" glow
         parts={[{ t: "Q&A", hi: true }]}
         lead="Задавайте." />
-      <Section tightTop dataLabel="10 Q&A">
+      <Section tightTop dataLabel="09 Q&A">
         <Reveal>
           <div style={{ display: "flex", justifyContent: "center", padding: "clamp(20px, 3vw, 40px) 0" }}>
             <img src="assets/cat-question.webp" alt="I have a question" data-lightbox-src="assets/cat-question.webp" data-lightbox-cap="I have a question"
@@ -1908,5 +1908,5 @@ function VidThumb({ src, cap }) {
 
 Object.assign(window, {
   DemoHero, DemoContext, DemoProduct, DemoDelivery,
-  DemoMarketing, DemoDesign, DemoSupport, DemoHR, DemoOPS, DemoQA, DemoOutro, Lightbox, VidThumb,
+  DemoMarketing, DemoDesign, DemoSupport, DemoHR, DemoQA, DemoOutro, Lightbox, VidThumb,
 });

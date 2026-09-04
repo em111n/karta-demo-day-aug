@@ -13,8 +13,7 @@ const SECTIONS = [
   { n: "06", label: "Design", id: "design" },
   { n: "07", label: "Support", id: "support" },
   { n: "08", label: "HR · Hiring", id: "hr" },
-  { n: "09", label: "OPS", id: "ops" },
-  { n: "10", label: "Q&A", id: "qa" },
+  { n: "09", label: "Q&A", id: "qa" },
 ];
 
 function MenuIcon({ open }) {
