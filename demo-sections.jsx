@@ -211,7 +211,7 @@ function DemoHero() {
         <HeroShaderBg intensity={1} />
         <h1 style={{ position: "relative", margin: 0, textAlign: "center", fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(72px,14vw,220px)", lineHeight: .95, letterSpacing: "-.035em", color: "#fafafa" }}>
           <Stagger text="DEMO DAY" base={0.1} step={0.04} /><br />
-          <span style={{ color: ACID }}><Stagger text="July" base={0.5} step={0.06} /></span>
+          <span style={{ color: ACID }}><Stagger text="August" base={0.5} step={0.06} /></span>
         </h1>
       </div>
     </section>
@@ -225,72 +225,70 @@ function DemoContext() {
   return (
     <React.Fragment>
       <SectionHero id="context" num="02" kicker="context · roadmap" align="left" glow
-        parts={[{ t: "Перевыпуск карт. " }, { t: "−$0.5M GTV.", hi: true }]}
-        lead="Часть карт попала к злоумышленнику. Клиентов поделили на 3 группы — хайспендерам вторая карта, нормалям перевыпуск, ноуспендерам — закрытие." />
+        parts={[{ t: "Tier A · 69% выручки. " }, { t: "База растёт вширь.", hi: true }]}
+        lead="Исследование хайспендеров и опрос 203 рефереров — узнали, что таргет должен быть top-10%, а не top-20%, и что реферальная петля рвётся на выплате." />
       <Section tightTop dataLabel="02 Context">
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "clamp(14px, 1.6vw, 22px)" }}>
-          <StatBlock label="Baseline · week" value="$2.78M" sub="GTV · плато 29.06–19.07" />
-          <StatBlock label="Week of reissue" value="−7.7 / −10.5%" sub="$2.57M · $2.49M" accent big />
-          <StatBlock label="GTV loss" value="≈ $0.5M" sub="суммарно за 2 недели" />
-          <StatBlock label="Card income · week" value="$68K / $66K" sub="было $75.2K/нед" />
+          <StatBlock label="Tier A · доля GTV" value="69%" sub="top-10% платящих" accent big />
+          <StatBlock label="LTV12 разрыв" value="247×" sub="Tier A vs нижний дециль" />
+          <StatBlock label="Топ-10 · доля GTV" value="24.6 → 13.3%" sub="концентрация падает — здоровый сигнал" />
+          <StatBlock label="Рефереры · клейм" value="17%" sub="из 203 когорты доходят до выплаты" />
         </div>
-        <Reveal delay={0.08}>
-          <div style={{ borderRadius: 14, border: `1px solid ${LINE}`, background: "linear-gradient(165deg, rgba(255,255,255,.04), rgba(255,255,255,.01) 70%)", overflow: "hidden" }}>
-            <div style={{ padding: "clamp(16px, 1.8vw, 22px) clamp(20px, 2.2vw, 28px)", borderBottom: `1px solid ${LINE}`, display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
-              <span style={{ fontFamily: FD, fontWeight: 700, fontSize: 11, letterSpacing: ".22em", textTransform: "uppercase", color: FG4 }}>Когорты · перевыпуск карт</span>
-              <span style={{ fontFamily: FD, fontWeight: 600, fontSize: 12, color: FG3 }}>13 247 клиентов · 100% базы</span>
-            </div>
-            <div style={{ display: "grid", gridTemplateColumns: "1.2fr 2fr .8fr .6fr", fontFamily: FD, fontVariantNumeric: "tabular-nums" }} className="dd-cohort-tbl">
-              {[
-                ["Когорта", "Критерий", "Users", "% базы"],
-              ].map((row, i) => (
-                <React.Fragment key={`h${i}`}>
-                  {row.map((c, j) => (
-                    <div key={j} style={{ padding: "14px clamp(18px, 2vw, 24px)", fontWeight: 700, fontSize: 10, letterSpacing: ".22em", textTransform: "uppercase", color: FG4, textAlign: j >= 2 ? "right" : "left", borderBottom: `1px solid ${LINE}` }}>{c}</div>
-                  ))}
-                </React.Fragment>
-              ))}
-              {[
-                { k: "High spenders", crit: "> $2 000", u: "1 241", p: "9.4%" },
-                { k: "Normal spenders", crit: "0 < spend ≤ $2 000, либо рег. 23.05–09.06 без спенда", u: "4 324", p: "32.6%" },
-                { k: "No spenders", crit: "≤ 0, рег. до 22.05", u: "7 682", p: "58.0%", accent: true },
-              ].map((r, i) => (
-                <React.Fragment key={i}>
-                  <div style={{ padding: "clamp(14px, 1.6vw, 18px) clamp(18px, 2vw, 24px)", fontWeight: 700, fontSize: "clamp(15px, 1.5vw, 18px)", color: r.accent ? ACID : FG, borderTop: `1px solid ${LINE}` }}>{r.k}</div>
-                  <div style={{ padding: "clamp(14px, 1.6vw, 18px) clamp(18px, 2vw, 24px)", fontWeight: 500, fontSize: "clamp(13px, 1.35vw, 15px)", color: FG2, borderTop: `1px solid ${LINE}`, lineHeight: 1.4 }}>{r.crit}</div>
-                  <div style={{ padding: "clamp(14px, 1.6vw, 18px) clamp(18px, 2vw, 24px)", fontWeight: 700, fontSize: "clamp(15px, 1.5vw, 18px)", textAlign: "right", color: r.accent ? ACID : FG, borderTop: `1px solid ${LINE}` }}>{r.u}</div>
-                  <div style={{ padding: "clamp(14px, 1.6vw, 18px) clamp(18px, 2vw, 24px)", fontWeight: 600, fontSize: "clamp(13px, 1.35vw, 15px)", textAlign: "right", color: r.accent ? ACID : FG3, borderTop: `1px solid ${LINE}` }}>{r.p}</div>
-                </React.Fragment>
-              ))}
-              <div style={{ padding: "clamp(14px, 1.6vw, 18px) clamp(18px, 2vw, 24px)", fontWeight: 800, fontSize: "clamp(15px, 1.5vw, 18px)", color: FG, borderTop: `1px solid ${LINE}`, background: "rgba(255,255,255,.02)" }}>Итого</div>
-              <div style={{ borderTop: `1px solid ${LINE}`, background: "rgba(255,255,255,.02)" }} />
-              <div style={{ padding: "clamp(14px, 1.6vw, 18px) clamp(18px, 2vw, 24px)", fontWeight: 800, fontSize: "clamp(15px, 1.5vw, 18px)", textAlign: "right", color: FG, borderTop: `1px solid ${LINE}`, background: "rgba(255,255,255,.02)" }}>13 247</div>
-              <div style={{ padding: "clamp(14px, 1.6vw, 18px) clamp(18px, 2vw, 24px)", fontWeight: 700, fontSize: "clamp(13px, 1.35vw, 15px)", textAlign: "right", color: FG, borderTop: `1px solid ${LINE}`, background: "rgba(255,255,255,.02)" }}>100%</div>
-            </div>
-            <style>{`@media (max-width: 720px) { .dd-cohort-tbl { grid-template-columns: 1fr 1fr !important; } .dd-cohort-tbl > *:nth-child(4n+2) { grid-column: 1 / -1 !important; } }`}</style>
-          </div>
-        </Reveal>
-        <div className="dd-two-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(16px, 2vw, 24px)", marginTop: "clamp(8px, 1vw, 12px)" }}>
-          <ColBlock title="Реактивация ноуспендеров" items={[
-            "Закрыли карты <b>7 682</b> клиентам — экономия ≈ <b>$3K/мес</b>",
-            "Вернулось <b>207</b>, принесли <b>$50K</b> спенда за неделю",
-            "Внедряем в CRM — удержание в продукте",
+
+        {/* Что выяснили в августе */}
+        <div className="dd-two-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(16px, 2vw, 24px)", marginTop: "clamp(20px, 2.4vw, 30px)" }}>
+          <ColBlock title="Исследование хайспендеров" kicker="DIS-80 · 11.08" items={[
+            "Естественная отсечка — <b>top-10% (Tier A)</b>, не top-20%",
+            "Tier A даёт <b>69% выручки</b>, разрыв LTV12 с нижним децилем — <b>247×</b>",
+            "Концентрация в топе снижается: доля топ-10 клиентов в GTV <b>24.6% → 13.3%</b>",
+            "База растёт вширь — здоровый сигнал",
           ]} accent />
-          <ColBlock title="Free card эксперимент" items={[
-            "Привели <b>203 клиента</b>, совершили более 1 картовой оплаты",
-            "Эффект меньше реактивации, но кампания успешная",
-            "Продолжаем — виральный движок Q3",
+          <ColBlock title="Опрос рефереров" kicker="203 респондента · 7–10.08" items={[
+            "Приглашают <b>из любви к продукту</b> (60%)",
+            "Петля рвётся на выплате — до клейма доходят только <b>17%</b>",
+            "Киты (10+ приглашённых) — снижение порога <b>2 000 Karats</b> запрос №1 (57%)",
+            "Кандидат №1 в roadmap: <b>2 000 → 500 Karats</b>",
           ]} />
         </div>
+
+        {/* Roadmap Q3 */}
+        <Reveal delay={0.08}>
+          <div style={{ marginTop: "clamp(24px, 3vw, 40px)", padding: "clamp(24px, 2.8vw, 36px)", borderRadius: 14, border: "1px solid rgba(204,255,0,.28)", background: "linear-gradient(135deg, rgba(204,255,0,.06), rgba(204,255,0,.015) 70%)" }}>
+            <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 16, flexWrap: "wrap", marginBottom: 20 }}>
+              <span style={{ fontFamily: FD, fontWeight: 700, fontSize: 11, letterSpacing: ".22em", textTransform: "uppercase", color: ACID }}>Roadmap · Q3</span>
+              <span style={{ fontFamily: FD, fontWeight: 500, fontSize: 13, color: FG3 }}>согласовано с командой</span>
+            </div>
+            <div className="dd-two-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "clamp(14px, 1.8vw, 22px)" }}>
+              <ColBlock title="Product" items={[
+                "Retention M1 новичка <b>30% → 35%</b> — самый дорогой узел дерева",
+                "Tx старой базы <b>+30%</b> (35 → 45.5 tx/мес на юзера)",
+                "Retention Tier A <b>95% → 97%</b>",
+                "Subscription — go/no-go к октябрю",
+              ]} />
+              <ColBlock title="Marketing" items={[
+                "Воронка KYC → платящий <b>8.8% → 13.2%</b>",
+                "Affiliate-программа <b>с нуля</b>",
+                "Инфлюенс-тест — <b>11 интеграций/мес</b> к сентябрю",
+                "Все три с дедлайном <b>30.09</b>",
+              ]} />
+              <ColBlock title="Ops" items={[
+                "Единый дашборд компании — план/факт по 5 ключевым KPI",
+                "Linear — операционный хребет",
+                "Org Structure 2.0 — разделение B2C / B2B / Andgate",
+              ]} />
+            </div>
+          </div>
+        </Reveal>
       </Section>
     </React.Fragment>
   );
 }
 
 /* ==============================================================
-   03 · BIZDEV
+   03 · BIZDEV — hidden in August (kept as dead code for future)
    ============================================================== */
-function DemoBizdev() {
+/* eslint-disable */
+function _DemoBizdev_hidden_August() {
   const rainWins = [
     "Переподписали контракт с Rain — <b>улучшенные коммерческие условия</b>",
     "<b>Июнь = первый месяц с карточным GTV &gt;$10M</b> → по контракту 70% tier",
@@ -347,31 +345,51 @@ function DemoProduct() {
   return (
     <React.Fragment>
       <SectionHero id="product" num="03" kicker="product metrics" align="left" glow
-        parts={[{ t: "GTV $11.85M — " }, { t: "79% плана.", hi: true }]}
-        lead="Без one-time клиента прошлого месяца — растём на 7%. Платящих +6.2%, транзакций +8.9%." />
+        parts={[{ t: "GTV $12.24M — " }, { t: "49% плана.", hi: true }]}
+        lead="+3.3% MoM. Платящих +1%, транзакций +1%. Годовая цель $55M/мес к декабрю требует 25.8% MoM — отстаём на 2 месяца." />
       <Section tightTop dataLabel="03 Product">
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "clamp(14px, 1.6vw, 22px)" }}>
-          <StatBlock label="GTV · July" value="$11.85M" sub="цель $15M · 79% плана" accent big />
-          <StatBlock label="MoM growth" value="+7%" sub="без one-time $1.4M клиента" />
-          <StatBlock label="Paying users" value="5 941" sub="+6.2% · было 5 592" />
-          <StatBlock label="Transactions" value="173K" sub="+8.9% · было 159K" />
+          <StatBlock label="GTV · August" value="$12.24M" sub="цель $24M · 49% плана" accent big />
+          <StatBlock label="MoM growth" value="+3.3%" sub="наблюдаемый MoM ≈ 9%" />
+          <StatBlock label="Paying users" value="5 984" sub="+1% · было 5 924" />
+          <StatBlock label="Transactions" value="245 190" sub="+1% · было 243 109" />
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "clamp(14px, 1.6vw, 22px)", marginTop: "clamp(14px, 1.6vw, 22px)" }}>
-          <StatBlock label="Median spend / user" value="$182" sub="было $174" />
-          <StatBlock label="Plan gap" value="−$3.15M" sub="фокус на GTV/user" />
+          <StatBlock label="Median spend / user" value="$189" sub="было $184" />
+          <StatBlock label="Plan gap · год" value="≈ 2 мес" sub="нужно 25.8% MoM, факт 9%" />
         </div>
-        <div className="dd-two-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(16px, 2vw, 24px)", marginTop: "clamp(20px, 2.4vw, 28px)" }}>
-          <ColBlock title="Опросы" items={[
-            "<b>ОАЭ клиенты</b> ждут физкарты, AED-рельсы, мобильное приложение",
-            "<b>Оттекшие клиенты</b> просят вернуть US ACH и Wire, кешбэк, физкарту",
-            "AED рельсы — августовская доработка",
-            "Mobile lead — не найден в июле, эффект с Q4",
+
+        {/* Tier A hero block */}
+        <Reveal delay={0.08}>
+          <div style={{ marginTop: "clamp(24px, 3vw, 40px)", padding: "clamp(24px, 2.8vw, 36px)", borderRadius: 14, border: "1px solid rgba(204,255,0,.28)", background: "linear-gradient(135deg, rgba(204,255,0,.06), rgba(204,255,0,.015) 70%)" }}>
+            <div style={{ display: "flex", alignItems: "baseline", gap: 14, marginBottom: 20, flexWrap: "wrap" }}>
+              <span style={{ fontFamily: FD, fontWeight: 700, fontSize: 11, letterSpacing: ".22em", textTransform: "uppercase", color: ACID }}>Tier A · top-10% платящих</span>
+              <span style={{ fontFamily: FD, fontWeight: 500, fontSize: 13, color: FG3 }}>824 человека</span>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "clamp(12px, 1.4vw, 18px)" }}>
+              <StatBlock label="m1 GTV avg" value="$10 912" sub="средний за месяц 1" />
+              <StatBlock label="LTV12" value="$2 664" sub="за 12 месяцев" />
+              <StatBlock label="ARPU / мес" value="$225" sub="стабильный" />
+              <StatBlock label="Payback" value="< нед" sub="LTV/CAC 133×" accent />
+            </div>
+            <p style={{ margin: "clamp(16px, 2vw, 24px) 0 0", fontFamily: FD, fontWeight: 500, fontSize: "clamp(15px, 1.5vw, 18px)", lineHeight: 1.5, color: FG2 }}>
+              Лучший leading indicator — <b style={{ color: FG }}>Digital Wallet в Apple/Google Pay</b>: конверсия в платящего <b style={{ color: ACID }}>82%</b> против <b>1.3%</b> без него.
+            </p>
+          </div>
+        </Reveal>
+
+        {/* Referral survey callout */}
+        <div className="dd-two-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(16px, 2vw, 24px)", marginTop: "clamp(24px, 3vw, 32px)" }}>
+          <ColBlock title="Опрос рефереров" kicker="203 респондента · RR 9.8% · ±6.5 п.п." items={[
+            "До выплаты доходят только <b>17%</b> когорты",
+            "Порог клейма <b>2 000 Karats</b> — тормоз №1 у активных рефереров",
+            "Считаем экономику <b>2 000 → 500 Karats</b> — самый дешёвый рычаг",
           ]} />
           <ColBlock title="Что дальше" items={[
-            "<b>Реактивация:</b> когорты + опрос по рефералам — приоритет 170 Tier A ($79K спенда)",
-            "<b>Due Pay-in:</b> 25 человек с 4 августа, расширение 11–19, GBP/AED в phase 3",
-            "<b>Разбивка деклайнов</b> по причинам — рычаг $14K/мес",
-            "Экран Digital Wallet · CRM-триггеры · decline reasons",
+            "Tx старой базы <b>→ 45.5/мес</b> на юзера = +$788 GTV/юзер (+30%)",
+            "DW-экран в онбординге · <b>QR-payments</b> · физкарты на поток",
+            "Retention M1 <b>30 → 35%</b> — самый дорогой узел",
+            "Subscription — go/no-go к октябрю",
           ]} accent />
         </div>
       </Section>
@@ -386,134 +404,129 @@ function DemoDelivery() {
   return (
     <React.Fragment>
       <SectionHero id="delivery" num="04" kicker="delivery · dev · qa" align="left" glow
-        parts={[{ t: "Rails, карты, " }, { t: "безопасность.", hi: true }]}
-        lead="Rain Pay-in, кнопка перевыпуска и вторая карта, Intercom SDK, стрелка QA 55 → 72%." />
+        parts={[{ t: "Pay In · Rain · " }, { t: "атака отражена.", hi: true }]}
+        lead="Sprint capacity удержали на 309 sp, passrate вырос до 75.6%, безопасность выдержала атаку." />
       <Section tightTop dataLabel="04 Delivery">
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "clamp(14px, 1.6vw, 22px)" }}>
-          <StatBlock label="Avg SP · July" value="329" sub="план 309 · +6.5%" accent big />
-          <StatBlock label="Feature SP" value="280" sub="было 269 в июне" />
-          <StatBlock label="Incident SP" value="49" sub="было 59 в июне · −17%" />
-          <StatBlock label="QA PassRate" value="72%" sub="стабильность 90%" />
+          <StatBlock label="Avg SP · August" value="309" sub="capacity 309 sp · 100%" accent big />
+          <StatBlock label="QA PassRate" value="75.6%" sub="было 72% · вверх" />
+          <StatBlock label="Автотесты · KYC моки" value="99.9%" sub="без переключения вебхуков" />
+          <StatBlock label="Безопасность" value="Атака отражена" sub="действия сведены к нулю" />
         </div>
 
         {/* Ship log */}
         <Reveal delay={0.08}>
           <div style={{ marginTop: "clamp(20px, 2.4vw, 30px)", padding: "clamp(24px, 2.8vw, 36px)", borderRadius: 14, border: `1px solid ${LINE}`, background: "linear-gradient(165deg, rgba(255,255,255,.06), rgba(255,255,255,.015) 70%)" }}>
-            <h3 style={{ margin: 0, fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(18px, 1.8vw, 24px)", letterSpacing: ".04em", textTransform: "uppercase", color: FG, marginBottom: 20 }}>Ship log · July</h3>
+            <h3 style={{ margin: 0, fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(18px, 1.8vw, 24px)", letterSpacing: ".04em", textTransform: "uppercase", color: FG, marginBottom: 20 }}>Ship log · August</h3>
             <div className="dd-two-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(16px, 2vw, 26px)" }}>
-              <ColBlock title="Платёжные rails" items={[
-                "<b>01.07</b> — Rain Pay-in, входящие через виртуальные счета (ACH/Wire)",
-                "<b>09.07</b> — виртуальные аккаунты Rain и Due на сотрудников (догфудинг)",
-                "Первый фиатный рейл на входе — <b>причина №1 оттока</b> в опросе",
-              ]} />
-              <ColBlock title="Карты" items={[
-                "<b>23.07</b> — кнопка перевыпуска и статус Under Review",
-                "<b>24.07</b> — вторая карта в интерфейсе",
-                "Продуктовая работа июля сделала <b>операционку июля возможной</b>",
+              <ColBlock title="Выпущено" items={[
+                "<b>Pay In Due</b>",
+                "<b>Virtual Account Rain</b>",
+                "Новые маркетинговые ивенты (KYC и др.)",
               ]} accent />
-              <ColBlock title="Безопасность" items={[
-                "<b>15.07</b> — Intercom SDK с identity verification — закрыта уязвимость подмены user_id",
-                "<b>16.07</b> — закрыта публичная регистрация в CMS <b>за 2 недели до атаки на Strapi</b>",
+              <ColBlock title="В работе · финишная прямая" items={[
+                "<b>New Payment Channels</b>",
+                "<b>Pay Out</b>",
+                "<b>DWH</b>",
               ]} />
-              <ColBlock title="Growth инфра" items={[
-                "<b>15–17.07</b> — синхронизация email/person_id из KYC в Customer.io",
-                "<b>22.07</b> — ручная синхронизация рефералов через Keitaro, восстановление после поломки реф-ссылки 01.07",
+              <ColBlock title="Следующие вехи" items={[
+                "Доставка <b>физкарт</b>",
+                "Переезд на <b>Andgate</b>",
+                "Реализация <b>Card Offer</b>",
+                "Задачи <b>рефералки</b>",
+              ]} />
+              <ColBlock title="Процесс" items={[
+                "Внедрена <b>новая система приоритетов</b> — рост фичевых задач",
+                "Внедрена <b>новая система планирования</b>",
+                "Курс на ускорение доставки фичей",
               ]} accent />
             </div>
           </div>
         </Reveal>
 
-        {/* Delayed + focus */}
-        <div className="dd-two-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(16px, 2vw, 24px)", marginTop: "clamp(20px, 2.4vw, 28px)" }}>
-          <ColBlock title="Задержки" items={[
-            "<b>Due Pay-in</b> сдвинулся на 6 августа: баг Sumsub, сверка анкеты, рефанды",
-          ]} />
-          <ColBlock title="Открытые проблемы" items={[
-            "Критикал багов меньше — но <b>меньше релизов</b>",
-            "Ключевые точки риска: <b>безопасность</b> и <b>интеграции платежек</b>",
-            "Стабильность окружений",
-          ]} />
-        </div>
-
-        {/* Incident dashboards · June vs July */}
-        <Reveal delay={0.14}>
-          <div style={{ marginTop: "clamp(20px, 2.4vw, 30px)", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(14px, 1.8vw, 22px)" }} className="dd-two-col">
-            {[
-              {
-                title: "Incident issues · Июнь", total: 10, max: 4,
-                bars: [
-                  { label: "Blocker", segs: [{v:2,c:"#4a90e2"},{v:1,c:"#e07a3f"}], total: 3 },
-                  { label: "Critical", segs: [{v:1,c:"#4a90e2"},{v:1,c:"#e07a3f"},{v:1,c:"#3ac16f"},{v:1,c:"#a04a5e"}], total: 4 },
-                  { label: "Major",    segs: [{v:1,c:"#4a90e2"},{v:1,c:"#e07a3f"},{v:1,c:"#3ac16f"}], total: 3 },
-                ],
-                legend: [{k:"Personal",c:"#4a90e2"},{k:"Platform",c:"#e07a3f"},{k:"Delivery",c:"#3ac16f"},{k:"Business",c:"#a04a5e"}],
-                rows: [
-                  ["Blocker", 3, 2, 1, 0, 0],
-                  ["Critical", 4, 1, 1, 1, 1],
-                  ["Major", 3, 1, 1, 1, 0],
-                ],
-              },
-              {
-                title: "Incident issues · Июль", total: 4, max: 4,
-                bars: [
-                  { label: "Blocker", segs: [{v:1,c:"#3ac16f"}], total: 1 },
-                  { label: "Critical", segs: [{v:1,c:"#4a90e2"},{v:2,c:"#3ac16f"}], total: 3 },
-                ],
-                legend: [{k:"Personal",c:"#4a90e2"},{k:"Delivery",c:"#3ac16f"}],
-                rows: [
-                  ["Blocker", 1, 0, 1],
-                  ["Critical", 3, 1, 2],
-                ],
-                hi: true,
-              },
-            ].map((d, i) => (
-              <div key={i} style={{ padding: "clamp(18px, 2vw, 22px)", borderRadius: 12, border: d.hi ? "1px solid rgba(204,255,0,.28)" : `1px solid ${LINE}`, background: d.hi ? "linear-gradient(135deg, rgba(204,255,0,.06), rgba(204,255,0,.015) 70%)" : "linear-gradient(165deg, rgba(255,255,255,.04), rgba(255,255,255,.01) 70%)" }}>
-                <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: 12 }}>
-                  <span style={{ fontFamily: FD, fontWeight: 700, fontSize: "clamp(14px, 1.4vw, 17px)", color: d.hi ? ACID : FG }}>{d.title}</span>
-                  <span style={{ fontFamily: FD, fontWeight: 800, fontSize: "clamp(22px, 2.4vw, 28px)", color: d.hi ? ACID : FG }}>{d.total}</span>
-                </div>
-                <div style={{ position: "relative", height: 260, marginBottom: 8, paddingLeft: 4, paddingRight: 28 }}>
-                  {Array.from({ length: d.max + 1 }, (_, k) => k).map((y) => (
-                    <React.Fragment key={y}>
-                      <div style={{ position: "absolute", left: 4, right: 28, bottom: `${(y / d.max) * 100}%`, borderTop: y === 0 ? `1px solid ${LINE}` : `1px dashed rgba(255,255,255,.06)`, height: 0, pointerEvents: "none" }} />
-                      <span style={{ position: "absolute", right: 4, bottom: `calc(${(y / d.max) * 100}% - 7px)`, fontFamily: FD, fontWeight: 500, fontSize: 10, color: FG4, fontVariantNumeric: "tabular-nums" }}>{y}</span>
-                    </React.Fragment>
-                  ))}
-                  <div style={{ position: "absolute", inset: "0 28px 0 4px", display: "flex", alignItems: "flex-end", justifyContent: "space-around", gap: 24 }}>
-                    {d.bars.map((b, j) => (
-                      <div key={j} style={{ display: "flex", flexDirection: "column-reverse", width: 40, height: `${(b.total / d.max) * 100}%`, borderRadius: "3px 3px 0 0", overflow: "hidden" }}>
-                        {b.segs.map((s, k) => (
-                          <div key={k} style={{ height: `${(s.v / b.total) * 100}%`, background: s.c }} />
-                        ))}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div style={{ display: "flex", justifyContent: "space-around", gap: 24, paddingLeft: 4, paddingRight: 28, marginBottom: 16 }}>
-                  {d.bars.map((b, j) => (
-                    <span key={j} style={{ width: 40, textAlign: "center", fontFamily: FD, fontWeight: 600, fontSize: 12, color: FG3 }}>{b.label}</span>
-                  ))}
-                </div>
-                <div style={{ display: "grid", gridTemplateColumns: `1.2fr .8fr repeat(${d.legend.length}, 1fr)`, fontFamily: FD, fontVariantNumeric: "tabular-nums", gap: 0 }}>
-                  <div style={{ padding: "12px 14px", fontWeight: 700, fontSize: 11, letterSpacing: ".18em", textTransform: "uppercase", color: FG4 }}>Label</div>
-                  <div style={{ padding: "12px 14px", fontWeight: 700, fontSize: 11, letterSpacing: ".18em", textTransform: "uppercase", color: FG4, textAlign: "right" }}>Count</div>
-                  {d.legend.map((l, k) => (
-                    <div key={k} style={{ padding: "12px 10px", fontWeight: 700, fontSize: 11, letterSpacing: ".14em", textTransform: "uppercase", color: FG4, textAlign: "right", display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 6 }}>
-                      <span style={{ width: 10, height: 10, borderRadius: 2, background: l.c }} />{l.k}
-                    </div>
-                  ))}
-                  {d.rows.map((r, k) => (
-                    <React.Fragment key={k}>
-                      {r.map((c, m) => (
-                        <div key={m} style={{ padding: "12px 14px", fontWeight: m === 0 ? 700 : 600, fontSize: m === 1 ? "clamp(15px, 1.5vw, 18px)" : "clamp(13px, 1.35vw, 15px)", color: m === 0 ? FG : (m === 1 ? FG : FG2), textAlign: m === 0 ? "left" : "right", borderTop: `1px solid ${LINE}` }}>{c}</div>
-                      ))}
-                    </React.Fragment>
-                  ))}
-                </div>
-              </div>
-            ))}
+        {/* QA + Autotests */}
+        <Reveal delay={0.1}>
+          <div style={{ marginTop: "clamp(20px, 2.4vw, 30px)", padding: "clamp(24px, 2.8vw, 36px)", borderRadius: 14, border: "1px solid rgba(204,255,0,.28)", background: "linear-gradient(135deg, rgba(204,255,0,.06), rgba(204,255,0,.015) 70%)" }}>
+            <h3 style={{ margin: 0, fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(18px, 1.8vw, 24px)", letterSpacing: ".04em", textTransform: "uppercase", color: ACID, marginBottom: 20 }}>Автотесты · качество</h3>
+            <div className="dd-two-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(16px, 2vw, 26px)" }}>
+              <ColBlock title="Что улучшили" items={[
+                "Passrate <b>72% → 75.6%</b>",
+                "<b>Моки KYC</b> — аккаунты и компании без вебхуков (99.9% автотестов)",
+                "Отдельный набор для <b>интеграций</b> (требуют хуки)",
+                "B2C: создание аккаунтов, KYC, транзакции Rain/Due через сендбокс",
+              ]} />
+              <ColBlock title="Следующие шаги" items={[
+                "<b>B2C Rain/Due</b> — мок транзакций через API",
+                "<b>B2C UI</b> — сценарий User Flow на Playwright",
+              ]} />
+            </div>
           </div>
         </Reveal>
+
+        {/* Incidents list */}
+        <Reveal delay={0.12}>
+          <div style={{ marginTop: "clamp(20px, 2.4vw, 30px)", padding: "clamp(24px, 2.8vw, 36px)", borderRadius: 14, border: `1px solid ${LINE}`, background: "linear-gradient(165deg, rgba(255,255,255,.04), rgba(255,255,255,.01) 70%)" }}>
+            <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 14, flexWrap: "wrap", marginBottom: 16 }}>
+              <h3 style={{ margin: 0, fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(18px, 1.8vw, 24px)", letterSpacing: ".04em", textTransform: "uppercase", color: FG }}>Стабильность · инциденты</h3>
+              <span style={{ fontFamily: FD, fontWeight: 500, fontSize: 13, color: FG3 }}>сбои провайдеров + рост нагрузки от фичей</span>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: 10, fontFamily: FD, fontVariantNumeric: "tabular-nums" }}>
+              {[
+                { id: "DEL-324", scope: "massive · атака", title: "Ошибка регистрации" },
+                { id: "KPE-2181", scope: "few · сторона Rain", title: "Проблемы с карточными платежами" },
+                { id: "KPL-1427", scope: "few · откат девопс", title: "Выгрузка из админки" },
+                { id: "KBU-1062", scope: "single · исправлено", title: "3DS на старую почту" },
+                { id: "KBU-1079", scope: "single · блокировка", title: "Прохождение KYC не на себя" },
+                { id: "KBU-1038", scope: "single", title: "Угон аккаунта" },
+                { id: "KBU-1098", scope: "single", title: "Компания не попала в Rain" },
+              ].map((it, i) => (
+                <div key={i} style={{ display: "grid", gridTemplateColumns: "auto 1fr auto", gap: 16, alignItems: "baseline", padding: "12px 16px", borderRadius: 10, background: "rgba(255,255,255,.02)", border: `1px solid ${LINE}` }}>
+                  <span style={{ fontFamily: FD, fontWeight: 700, fontSize: 13, letterSpacing: ".05em", color: FG3 }}>{it.id}</span>
+                  <span style={{ fontFamily: FD, fontWeight: 600, fontSize: "clamp(13px, 1.35vw, 15px)", color: FG }}>{it.title}</span>
+                  <span style={{ fontFamily: FD, fontWeight: 500, fontSize: 12, color: FG4, textAlign: "right" }}>{it.scope}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
+
+        {/* Pay In stats */}
+        <Reveal delay={0.14}>
+          <div style={{ marginTop: "clamp(20px, 2.4vw, 30px)", padding: "clamp(24px, 2.8vw, 36px)", borderRadius: 14, border: `1px solid ${LINE}`, background: "linear-gradient(165deg, rgba(255,255,255,.06), rgba(255,255,255,.015) 70%)" }}>
+            <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 14, flexWrap: "wrap", marginBottom: 20 }}>
+              <h3 style={{ margin: 0, fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(18px, 1.8vw, 24px)", letterSpacing: ".04em", textTransform: "uppercase", color: FG }}>Статистика Pay In · Pay Out</h3>
+            </div>
+            <div className="dd-two-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(14px, 1.8vw, 22px)" }}>
+              <div style={{ padding: "clamp(18px, 2vw, 24px)", borderRadius: 12, border: `1px solid ${LINE}`, background: "rgba(255,255,255,.02)" }}>
+                <div style={{ fontFamily: FD, fontWeight: 700, fontSize: 11, letterSpacing: ".22em", textTransform: "uppercase", color: FG4, marginBottom: 14 }}>Pay In · каналы</div>
+                {[
+                  { k: "SEPA", v: 61, hi: true },
+                  { k: "ACH", v: 29 },
+                  { k: "PIX", v: 17 },
+                  { k: "Wire", v: 8 },
+                  { k: "SPEI (Мексика)", v: 8 },
+                ].map((r, i) => {
+                  const max = 61;
+                  return (
+                    <div key={i} style={{ display: "grid", gridTemplateColumns: "120px 1fr auto", gap: 12, alignItems: "center", padding: "8px 0", borderTop: i > 0 ? `1px solid ${LINE}` : "none" }}>
+                      <span style={{ fontFamily: FD, fontWeight: 700, fontSize: 14, color: r.hi ? ACID : FG }}>{r.k}</span>
+                      <div style={{ height: 10, background: "rgba(255,255,255,.04)", borderRadius: 6, overflow: "hidden" }}>
+                        <div style={{ height: "100%", width: `${(r.v/max)*100}%`, background: r.hi ? ACID : "#4a90e2" }} />
+                      </div>
+                      <span style={{ fontFamily: FD, fontWeight: 800, fontSize: 16, color: r.hi ? ACID : FG, fontVariantNumeric: "tabular-nums" }}>{r.v}</span>
+                    </div>
+                  );
+                })}
+              </div>
+              <div style={{ padding: "clamp(18px, 2vw, 24px)", borderRadius: 12, border: `1px solid ${LINE}`, background: "rgba(255,255,255,.02)", display: "flex", flexDirection: "column", gap: 12 }}>
+                <div style={{ fontFamily: FD, fontWeight: 700, fontSize: 11, letterSpacing: ".22em", textTransform: "uppercase", color: FG4 }}>Скриншоты статистики</div>
+                <img src="assets/notion-aug/delivery-payin-stats.png" alt="Pay In stats" data-lightbox-src="assets/notion-aug/delivery-payin-stats.png" data-lightbox-cap="Pay In · статистика" style={{ width: "100%", height: "auto", borderRadius: 8, cursor: "zoom-in", display: "block", border: `1px solid ${LINE}` }} />
+                <img src="assets/notion-aug/delivery-due-stats.png" alt="DUE stats" data-lightbox-src="assets/notion-aug/delivery-due-stats.png" data-lightbox-cap="Pay Out DUE · статистика" style={{ width: "100%", height: "auto", borderRadius: 8, cursor: "zoom-in", display: "block", border: `1px solid ${LINE}` }} />
+              </div>
+            </div>
+          </div>
+        </Reveal>
+
       </Section>
     </React.Fragment>
   );
@@ -526,195 +539,92 @@ function DemoMarketing() {
   return (
     <React.Fragment>
       <SectionHero id="marketing" num="05" kicker="marketing" align="left" glow
-        parts={[{ t: "GTV новых пользователей " }, { t: "+80% MoM.", hi: true }]}
-        lead="Пересобрали аналитику после двух ударов и получили лучший результат в FB с февраля." />
+        parts={[{ t: "GTV new users " }, { t: "второй за всю историю.", hi: true }]}
+        lead="+37% GTV при +3.7% бюджета. 15 843 регистрации (+32%). ОАЭ и Британия — выключенные регионы вернули $ и плательщиков." />
       <Section tightTop dataLabel="05 Marketing">
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "clamp(14px, 1.6vw, 22px)" }}>
-          <StatBlock label="GTV · new users" value="+80%" sub="MoM · незакрытая когорта" accent big />
-          <StatBlock label="vs peak" value="+17%" sub="лучше предыдущего пика" />
-          <StatBlock label="Aug target" value="$939K" sub="закрытая когорта · $770K Admin" />
-          <StatBlock label="Lead cost" value="$20" sub="было $80 (×4 дешевле)" />
+          <StatBlock label="GTV new users" value="$1.13M" sub="было $823K · +37%" accent big />
+          <StatBlock label="Бюджет" value="+3.7%" sub="эффективность выросла" />
+          <StatBlock label="Регистрации" value="15 843" sub="+32% MoM" />
+          <StatBlock label="Клиент · LTV" value="$1 185" sub="максимум за 15 месяцев" />
         </div>
 
-        {/* Двойной удар */}
+        {/* GTV chart from Notion */}
+        <Reveal delay={0.06}>
+          <div style={{ marginTop: "clamp(20px, 2.4vw, 30px)", padding: "clamp(20px, 2.4vw, 28px)", borderRadius: 14, border: `1px solid ${LINE}`, background: "linear-gradient(165deg, rgba(255,255,255,.04), rgba(255,255,255,.01) 70%)" }}>
+            <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 14, flexWrap: "wrap", marginBottom: 12 }}>
+              <h4 style={{ margin: 0, fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(18px, 1.8vw, 24px)", letterSpacing: "-.012em", color: FG }}>GTV new users · трек за 3 месяца</h4>
+              <span style={{ fontFamily: FD, fontWeight: 500, fontSize: 13, color: FG3 }}>август — второй за всю историю по незакрытой когорте</span>
+            </div>
+            <img src="assets/notion-aug/marketing-gtv-new-users.png" alt="GTV new users chart" data-lightbox-src="assets/notion-aug/marketing-gtv-new-users.png" data-lightbox-cap="GTV новых пользователей · трек" style={{ width: "100%", height: "auto", borderRadius: 10, cursor: "zoom-in", display: "block", border: `1px solid ${LINE}` }} />
+          </div>
+        </Reveal>
+
+        {/* Attracted users growth chart */}
         <Reveal delay={0.08}>
-          <div style={{ marginTop: "clamp(20px, 2.4vw, 30px)", padding: "clamp(24px, 2.8vw, 36px)", borderRadius: 14, border: `1px solid ${LINE}`, background: "linear-gradient(165deg, rgba(255,255,255,.06), rgba(255,255,255,.015) 70%)" }}>
-            <h3 style={{ margin: 0, fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(18px, 1.8vw, 24px)", letterSpacing: ".04em", textTransform: "uppercase", color: FG, marginBottom: 20 }}>Главный вызов: пересборка аналитики</h3>
-            <BulletList items={[
-              "<b>Перевыпуск скомпрометированных карт</b> — Card Created события стреляют в Paid как новые пользователи",
-              "<b>Дробление SumsubVerification</b> на составные части обнулило Postback в Paid",
-              "Инцидент подсветил необходимость <b>единой аналитической структуры</b> внутри компании и маркетинга",
-            ]} />
+          <div style={{ marginTop: "clamp(16px, 2vw, 24px)", padding: "clamp(20px, 2.4vw, 28px)", borderRadius: 14, border: `1px solid ${LINE}`, background: "linear-gradient(165deg, rgba(255,255,255,.04), rgba(255,255,255,.01) 70%)" }}>
+            <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 14, flexWrap: "wrap", marginBottom: 12 }}>
+              <h4 style={{ margin: 0, fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(18px, 1.8vw, 24px)", letterSpacing: "-.012em", color: FG }}>Привлечённые пользователи</h4>
+              <span style={{ fontFamily: FD, fontWeight: 500, fontSize: 13, color: FG3 }}>с июня <b style={{ color: ACID }}>+20%</b></span>
+            </div>
+            <img src="assets/notion-aug/marketing-attracted-growth.png" alt="Attracted users growth" data-lightbox-src="assets/notion-aug/marketing-attracted-growth.png" data-lightbox-cap="Рост привлечённых пользователей" style={{ width: "100%", height: "auto", borderRadius: 10, cursor: "zoom-in", display: "block", border: `1px solid ${LINE}` }} />
           </div>
         </Reveal>
 
-        {/* GTV +80% MoM chart — programmatic bars */}
+        {/* Funnel table: regs / KYC / deposits / cards */}
         <Reveal delay={0.1}>
-          <div style={{ marginTop: "clamp(20px, 2.4vw, 30px)", padding: "clamp(24px, 2.8vw, 36px)", borderRadius: 14, border: `1px solid ${LINE}`, background: "linear-gradient(165deg, rgba(255,255,255,.04), rgba(255,255,255,.01) 70%)" }}>
-            <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 12, marginBottom: 20, flexWrap: "wrap" }}>
-              <h4 style={{ margin: 0, fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(18px, 1.8vw, 24px)", letterSpacing: "-.012em", color: FG }}>GTV по когортам</h4>
-              <div style={{ display: "flex", gap: 20, fontFamily: FD, fontWeight: 600, fontSize: 13, color: FG3 }}>
-                <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}><span style={{ width: 12, height: 12, borderRadius: 3, background: "#4a90e2" }} /> GTV Admin</span>
-                <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}><span style={{ width: 12, height: 12, borderRadius: 3, background: ACID }} /> GTV New</span>
-              </div>
+          <div style={{ marginTop: "clamp(16px, 2vw, 24px)", borderRadius: 14, border: `1px solid ${LINE}`, background: "linear-gradient(165deg, rgba(255,255,255,.04), rgba(255,255,255,.01) 70%)", overflow: "hidden" }}>
+            <div style={{ padding: "clamp(16px, 1.8vw, 22px) clamp(20px, 2.2vw, 28px)", borderBottom: `1px solid ${LINE}`, display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
+              <span style={{ fontFamily: FD, fontWeight: 700, fontSize: 11, letterSpacing: ".22em", textTransform: "uppercase", color: FG4 }}>Воронка · регистрации → карты</span>
+              <span style={{ fontFamily: FD, fontWeight: 600, fontSize: 12, color: FG3 }}>по месяцам</span>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gap: "clamp(10px, 1.4vw, 20px)", alignItems: "end", height: "clamp(220px, 26vw, 320px)" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr", fontFamily: FD, fontVariantNumeric: "tabular-nums" }}>
+              {["Месяц", "Регистрации", "KYC", "Депозиты", "Карты"].map((h, i) => (
+                <div key={i} style={{ padding: "16px 22px", fontWeight: 700, fontSize: 12, letterSpacing: ".2em", textTransform: "uppercase", color: FG4, borderBottom: `1px solid ${LINE}`, textAlign: i === 0 ? "left" : "right", background: "rgba(255,255,255,.02)" }}>{h}</div>
+              ))}
               {[
-                { m: "Фев", a: 478, n: 700 },
-                { m: "Мар", a: 444, n: 594 },
-                { m: "Апр", a: 491, n: 664 },
-                { m: "Май", a: 355, n: 408 },
-                { m: "Июн", a: 400, n: 460 },
-                { m: "Июл", a: 734, n: 823, hi: true },
-              ].map((d, i) => {
-                const max = 900;
-                return (
-                  <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8, height: "100%" }}>
-                    <div style={{ display: "flex", alignItems: "flex-end", gap: 6, height: "100%", width: "100%", justifyContent: "center" }}>
-                      <div style={{ position: "relative", width: "40%", maxWidth: 42, height: `${(d.a / max) * 100}%`, background: "#4a90e2", borderRadius: "4px 4px 0 0", opacity: d.hi ? 1 : .88 }}>
-                        <span style={{ position: "absolute", top: -22, left: "50%", transform: "translateX(-50%)", fontFamily: FD, fontWeight: 700, fontSize: 11, color: FG3, whiteSpace: "nowrap" }}>{d.a}K</span>
-                      </div>
-                      <div style={{ position: "relative", width: "40%", maxWidth: 42, height: `${(d.n / max) * 100}%`, background: d.hi ? ACID : "#a78bfa", borderRadius: "4px 4px 0 0" }}>
-                        <span style={{ position: "absolute", top: -22, left: "50%", transform: "translateX(-50%)", fontFamily: FD, fontWeight: 700, fontSize: 11, color: d.hi ? ACID : FG, whiteSpace: "nowrap" }}>{d.n}K</span>
-                      </div>
-                    </div>
-                    <span style={{ fontFamily: FD, fontWeight: 600, fontSize: 12, color: d.hi ? ACID : FG3, letterSpacing: ".04em" }}>{d.m}</span>
-                  </div>
-                );
-              })}
+                { c: ["май 26", "4 890", "1 383", "473", "430"] },
+                { c: ["июн 26", "3 818", "1 167", "435", "672"] },
+                { c: ["июл 26", "3 158", "943", "420", "374"] },
+                { c: ["авг 26", "7 889", "2 008", "574", "531"], hi: true },
+              ].map((r, i) => (
+                <React.Fragment key={i}>
+                  {r.c.map((c, j) => (
+                    <div key={j} style={{ padding: "16px 22px", fontWeight: j === 0 ? 700 : 600, fontSize: "clamp(15px, 1.5vw, 18px)", textAlign: j === 0 ? "left" : "right", color: r.hi ? ACID : (j === 0 ? FG : FG2), borderBottom: `1px solid ${LINE}`, background: r.hi ? "rgba(204,255,0,.04)" : "transparent" }}>{c}</div>
+                  ))}
+                </React.Fragment>
+              ))}
             </div>
           </div>
         </Reveal>
 
-        {/* Andromeda + attribution */}
-        <div className="dd-two-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(16px, 2vw, 24px)", marginTop: "clamp(20px, 2.4vw, 28px)", alignItems: "stretch" }}>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <ColBlock title="FB · Andromeda" items={[
-              "Запустили широкую кампанию по <b>новой структуре Andromeda</b>",
-              "<b>Лучший результат с февраля</b> в финансовой категории",
-            ]} accent />
-            <div style={{ marginTop: 12, padding: "clamp(18px, 2vw, 24px)", borderRadius: 12, border: `1px solid ${LINE}`, background: "linear-gradient(165deg, rgba(255,255,255,.04), rgba(255,255,255,.01) 70%)", flex: 1, display: "flex", flexDirection: "column" }}>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 12 }}>
-                {[
-                  { l: "Всего за период", v: "556", s: "1 июля — 4 августа" },
-                  { l: "Июль", v: "424", s: "13,7 в день" },
-                  { l: "Август 1–4", v: "132", s: "33,0 в день", hi: "+141% к темпу июля" },
-                  { l: "Пик", v: "42", s: "30 июля" },
-                ].map((k, i) => (
-                  <div key={i} style={{ padding: "12px 14px", borderRadius: 10, border: `1px solid ${LINE}`, background: "rgba(255,255,255,.02)" }}>
-                    <div style={{ fontFamily: FD, fontWeight: 600, fontSize: 10, letterSpacing: ".18em", textTransform: "uppercase", color: FG4, marginBottom: 4 }}>{k.l}</div>
-                    <div style={{ fontFamily: FD, fontWeight: 800, fontVariantNumeric: "tabular-nums", fontSize: "clamp(24px, 2.6vw, 32px)", lineHeight: 1, color: FG }}>{k.v}</div>
-                    <div style={{ fontFamily: FD, fontWeight: 500, fontSize: 11, color: FG3, marginTop: 4 }}>{k.s}</div>
-                    {k.hi && <div style={{ fontFamily: FD, fontWeight: 700, fontSize: 11, color: ACID, marginTop: 2 }}>↑ {k.hi}</div>}
-                  </div>
-                ))}
-              </div>
-              <div style={{ padding: "12px 14px", borderRadius: 10, border: `1px solid ${LINE}`, background: "rgba(255,255,255,.02)", flex: 1, display: "flex", flexDirection: "column" }}>
-                <div style={{ fontFamily: FD, fontWeight: 600, fontSize: 10, letterSpacing: ".18em", textTransform: "uppercase", color: FG4, marginBottom: 10 }}>Карты · создано в день</div>
-                <div style={{ display: "flex", alignItems: "flex-end", gap: 2, flex: 1, minHeight: 100 }}>
-                  {[16,9,16,7,15,4,6,10,13,7,22,5,17,11,15,4,9,16,13,7,15,10,17,12,7,12,4,17,20,42,38,36,32,41,25,22].map((v, i) => (
-                    <div key={i} style={{ flex: 1, height: `${(v / 42) * 100}%`, background: i >= 30 ? "#e07a3f" : (i >= 29 ? ACID : "#4a90e2"), borderRadius: "2px 2px 0 0", minHeight: 2 }} />
-                  ))}
-                </div>
-                <div style={{ display: "flex", justifyContent: "space-between", marginTop: 6, fontFamily: FD, fontWeight: 500, fontSize: 10, color: FG4 }}>
-                  <span>1 июл</span><span>июль</span><span>1 авг · 4 авг</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <ColBlock title="Attribution · FB Ads" items={[
-              "Начали активно фиксить <b>проклейку Paid источников</b> в Mixpanel",
-              "Вот как изменилась атрибуция FB Ads после <b>сквозной проклейки</b>",
-            ]} />
-            <div style={{ marginTop: 12, padding: "clamp(18px, 2vw, 24px)", borderRadius: 12, border: `1px solid ${LINE}`, background: "linear-gradient(165deg, rgba(255,255,255,.04), rgba(255,255,255,.01) 70%)", flex: 1, display: "flex", flexDirection: "column" }}>
-              <div style={{ fontFamily: FD, fontWeight: 600, fontSize: 11, letterSpacing: ".22em", textTransform: "uppercase", color: FG4, marginBottom: 18 }}>Регистрации · по источникам · недельно</div>
-              <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 4, flex: 1, minHeight: 220, paddingBottom: 4, borderBottom: `1px solid ${LINE}` }}>
-                {[
-                  { w: "May 4", total: 10, breakdown: [{s:"organic",v:6,c:"#a04a5e"},{s:"paid",v:3,c:"#e0a55e"},{s:"ref",v:1,c:"#4a90e2"}] },
-                  { w: "May 11", total: 8, breakdown: [{s:"organic",v:5,c:"#a04a5e"},{s:"paid",v:2,c:"#e0a55e"},{s:"ref",v:1,c:"#4a90e2"}] },
-                  { w: "May 18", total: 12, breakdown: [{s:"organic",v:8,c:"#a04a5e"},{s:"paid",v:3,c:"#e0a55e"},{s:"ref",v:1,c:"#4a90e2"}] },
-                  { w: "May 25", total: 21, breakdown: [{s:"organic",v:15,c:"#a04a5e"},{s:"paid",v:4,c:"#e0a55e"},{s:"ref",v:2,c:"#4a90e2"}] },
-                  { w: "Jun 1", total: 30, breakdown: [{s:"organic",v:23,c:"#a04a5e"},{s:"paid",v:5,c:"#e0a55e"},{s:"ref",v:2,c:"#4a90e2"}] },
-                  { w: "Jun 8", total: 37, breakdown: [{s:"organic",v:26,c:"#a04a5e"},{s:"paid",v:6,c:"#e0a55e"},{s:"ref",v:5,c:"#4a90e2"}] },
-                  { w: "Jun 15", total: 26, breakdown: [{s:"organic",v:20,c:"#a04a5e"},{s:"paid",v:4,c:"#e0a55e"},{s:"ref",v:2,c:"#4a90e2"}] },
-                  { w: "Jun 22", total: 21, breakdown: [{s:"organic",v:16,c:"#a04a5e"},{s:"paid",v:3,c:"#e0a55e"},{s:"ref",v:2,c:"#4a90e2"}] },
-                  { w: "Jun 29", total: 22, breakdown: [{s:"organic",v:17,c:"#a04a5e"},{s:"paid",v:3,c:"#e0a55e"},{s:"ref",v:2,c:"#4a90e2"}] },
-                  { w: "Jul 6", total: 31, breakdown: [{s:"organic",v:25,c:"#a04a5e"},{s:"paid",v:4,c:"#e0a55e"},{s:"ref",v:2,c:"#4a90e2"}] },
-                  { w: "Jul 13", total: 27, breakdown: [{s:"organic",v:21,c:"#a04a5e"},{s:"paid",v:4,c:"#e0a55e"},{s:"ref",v:2,c:"#4a90e2"}] },
-                  { w: "Jul 20", total: 31, breakdown: [{s:"organic",v:24,c:"#a04a5e"},{s:"paid",v:5,c:"#e0a55e"},{s:"ref",v:2,c:"#4a90e2"}] },
-                  { w: "Jul 27", total: 48, breakdown: [{s:"organic",v:39,c:"#a04a5e"},{s:"paid",v:6,c:"#e0a55e"},{s:"ref",v:3,c:"#4a90e2"}], hi: true },
-                  { w: "Aug 3", total: 29, breakdown: [{s:"paid",v:12,c:"#8b6b3a"},{s:"organic",v:10,c:"#5a3540"},{s:"ref",v:7,c:"#4a90e2"}], recent: true },
-                ].map((w, i) => {
-                  const max = 50;
-                  return (
-                    <div key={i} style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-end", height: "100%", position: "relative" }}>
-                      {w.hi && <span style={{ fontFamily: FD, fontWeight: 700, fontSize: 11, color: ACID, marginBottom: 4 }}>{w.total}</span>}
-                      <div style={{ display: "flex", flexDirection: "column-reverse", width: "78%", maxWidth: 36, height: `${(w.total / max) * 100}%`, borderRadius: "3px 3px 0 0", overflow: "hidden", opacity: w.recent ? .55 : 1, outline: w.hi ? `1px solid ${ACID}` : "none", outlineOffset: 1 }}>
-                        {w.breakdown.map((b, j) => (
-                          <div key={j} style={{ height: `${(b.v / w.total) * 100}%`, background: b.c }} />
-                        ))}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-              <div style={{ display: "flex", justifyContent: "space-between", gap: 4, marginTop: 10 }}>
-                {["May 4","May 11","May 18","May 25","Jun 1","Jun 8","Jun 15","Jun 22","Jun 29","Jul 6","Jul 13","Jul 20","Jul 27","Aug 3"].map((label, i) => (
-                  <span key={i} style={{ flex: 1, textAlign: "center", fontFamily: FD, fontWeight: 500, fontSize: 10, color: i === 12 ? ACID : FG4, letterSpacing: ".02em", whiteSpace: "nowrap" }}>{label}</span>
-                ))}
-              </div>
-              <div style={{ display: "flex", gap: 14, marginTop: 12, flexWrap: "wrap", fontFamily: FD, fontWeight: 500, fontSize: 11, color: FG3 }}>
-                <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}><span style={{ width: 10, height: 10, borderRadius: 2, background: "#a04a5e" }} /> Organic</span>
-                <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}><span style={{ width: 10, height: 10, borderRadius: 2, background: "#e0a55e" }} /> FB Paid</span>
-                <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}><span style={{ width: 10, height: 10, borderRadius: 2, background: "#4a90e2" }} /> Referral</span>
-                <span style={{ marginLeft: "auto", color: ACID, fontWeight: 700 }}>Jul 27: пик после Andromeda ↑</span>
-              </div>
-            </div>
-          </div>
+        {/* What we did + Regions */}
+        <div className="dd-two-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(16px, 2vw, 24px)", marginTop: "clamp(20px, 2.4vw, 30px)" }}>
+          <ColBlock title="Что сделали" items={[
+            "Реструктуризация <b>Paid источников</b>",
+            "Подключили <b>Email канал</b> в CRM",
+            "Новые <b>креативы</b> с ресайзами на новые сегменты",
+            "Запустили <b>новые регионы</b> и расширили верх воронки",
+            "<b>61 страна</b> в продвижении на бюджете $45.5K",
+          ]} />
+          <ColBlock title="Регионы · выключенные вернули $" kicker="wins" items={[
+            "<b>ОАЭ:</b> бюджет $8.3K → $4.2K, оборот <b>$182K → $480K</b>",
+            "<b>Британия:</b> $23K → $148K + <b>25 плательщиков</b> при нулевом бюджете",
+            "<b>Индонезия:</b> 104 плательщика по $12.67",
+            "Топовый крео: $1.7K расхода → <b>$119K</b> оборота (×70)",
+          ]} accent />
         </div>
 
-        {/* Bottlenecks */}
+        {/* Meta results */}
         <Reveal delay={0.14}>
-          <div style={{ marginTop: "clamp(20px, 2.4vw, 30px)", padding: "clamp(24px, 2.8vw, 36px)", borderRadius: 14, border: "1px solid rgba(204,255,0,.32)", background: "linear-gradient(135deg, rgba(204,255,0,.08), rgba(204,255,0,.02) 70%)" }}>
-            <h3 style={{ margin: 0, fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(18px, 1.8vw, 24px)", letterSpacing: ".04em", textTransform: "uppercase", color: ACID, marginBottom: 16 }}>Bottlenecks · country breakdown</h3>
-            <BulletList items={[
-              "Нет <b>QR платежей</b> для Тайланда и Индонезии",
-              "Нет <b>сквозной аналитики</b> по спенду пользователей до ГЕО в компании",
-              "Ведём лиды по $20 вместо $80, но не можем ответить <b>как эти пользователи спендят</b>",
-            ]} />
-            <div style={{ marginTop: 16, borderRadius: 12, border: "1px solid rgba(204,255,0,.2)", overflow: "hidden", background: "rgba(0,0,0,.25)" }}>
-              <div style={{ padding: "16px 26px", borderBottom: `1px solid ${LINE}`, fontFamily: FD, fontWeight: 600, fontSize: 14, letterSpacing: ".22em", textTransform: "uppercase", color: FG4, display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 8 }}>
-                <span>FB Ads · country breakdown</span>
-                <span>Jul 29 – Aug 3, 2026</span>
-              </div>
-              <div style={{ overflowX: "auto" }}>
-                <div style={{ display: "grid", gridTemplateColumns: "1.4fr .8fr .8fr .7fr .7fr .8fr .8fr", minWidth: 720, fontFamily: FD, fontVariantNumeric: "tabular-nums" }}>
-                  {["Country", "Amount", "Reach", "Leads", "Purch.", "Cost / p.", "Deposit"].map((h, i) => (
-                    <div key={i} style={{ padding: "16px 22px", fontWeight: 700, fontSize: 14, letterSpacing: ".2em", textTransform: "uppercase", color: FG4, borderBottom: `1px solid ${LINE}`, textAlign: i === 0 ? "left" : "right", background: "rgba(255,255,255,.02)" }}>{h}</div>
-                  ))}
-                  {[
-                    { c: ["Indonesia", "$211", "31 488", "66", "11", "$19", "46"] },
-                    { c: ["Thailand", "$256", "19 383", "37", "10", "$26", "24"] },
-                    { c: ["Vietnam", "$168", "19 659", "58", "7", "$24", "18"] },
-                    { c: ["Kosovo", "$103", "9 085", "57", "7", "$15", "12"] },
-                    { c: ["Serbia", "$278", "25 818", "15", "6", "$46", "162"], hi: true },
-                    { c: ["Egypt", "$344", "34 439", "143", "5", "$69", "19"] },
-                    { c: ["UAE", "$748", "31 320", "22", "4", "$187", "109"], hi: true },
-                    { c: ["Canada", "$155", "5 202", "64", "4", "$39", "11"] },
-                    { c: ["Morocco", "$825", "265 741", "67", "4", "$206", "41"] },
-                    { c: ["Moldova", "$225", "17 374", "36", "4", "$56", "105"] },
-                    { c: ["Bosnia & H.", "$60", "5 738", "20", "3", "$20", "8"] },
-                    { c: ["Jordan", "$169", "37 392", "15", "3", "$56", "12"] },
-                  ].map((r, i) => (
-                    <React.Fragment key={i}>
-                      {r.c.map((c, j) => (
-                        <div key={j} style={{ padding: "15px 22px", fontWeight: j === 0 ? 700 : 600, fontSize: "clamp(16px, 1.55vw, 20px)", textAlign: j === 0 ? "left" : "right", color: r.hi ? ACID : (j === 0 ? FG : FG2), borderBottom: `1px solid ${LINE}`, background: r.hi ? "rgba(204,255,0,.04)" : "transparent" }}>{c}</div>
-                      ))}
-                    </React.Fragment>
-                  ))}
-                </div>
-              </div>
+          <div style={{ marginTop: "clamp(20px, 2.4vw, 30px)", padding: "clamp(24px, 2.8vw, 36px)", borderRadius: 14, border: "1px solid rgba(204,255,0,.28)", background: "linear-gradient(135deg, rgba(204,255,0,.06), rgba(204,255,0,.015) 70%)" }}>
+            <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 14, flexWrap: "wrap", marginBottom: 16 }}>
+              <h3 style={{ margin: 0, fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(18px, 1.8vw, 24px)", letterSpacing: ".04em", textTransform: "uppercase", color: ACID }}>Meta · максимум с мая</h3>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "clamp(12px, 1.4vw, 18px)" }}>
+              <StatBlock label="Регистрации" value="7 889" sub="максимум с мая" />
+              <StatBlock label="Депозиты" value="574" sub="максимум с мая" />
+              <StatBlock label="Cost per payer" value="$36.07" sub="было $37.93 · дешевле при бόльшем объёме" />
             </div>
           </div>
         </Reveal>
@@ -722,6 +632,7 @@ function DemoMarketing() {
     </React.Fragment>
   );
 }
+
 
 /* ==============================================================
    07 · DESIGN — Product Design sub-block (click-through features)
@@ -1369,15 +1280,24 @@ function _DemoDesign_hidden_July() {
    08 · SUPPORT
    ============================================================== */
 function DemoSupport() {
-  const b2c = [["Time to first response","5m 46s","4m 10s"],["Inquiries handled","2 622","2 397"],["CSAT","86%","86.9%"]];
-  const b2b = [["Time to first response","1m 2s","2m 6s"],["Inquiries handled","288","171"],["CSAT","83.3%","100%"]];
+  const b2c = [
+    ["Time to first response", "4m 10s", "3m 21s"],
+    ["Inquiries handled",      "2 397",  "2 969"],
+    ["AI Agent resolution",    "—",      "61%"],
+    ["CSAT",                    "86.9%", "91% (1 702)"],
+  ];
+  const b2b = [
+    ["Time to first response", "2m 6s", "2m 33s"],
+    ["Inquiries handled",      "171",   "171"],
+    ["CSAT",                    "100%", "90%"],
+  ];
   const renderTable = (rows, accent) => (
     <table style={{ marginTop: 20, width: "100%", borderCollapse: "collapse", fontFamily: FD, fontSize: "clamp(16px, 1.6vw, 20px)" }}>
       <thead>
         <tr>
           <th style={{ textAlign: "left", padding: "12px 0", borderBottom: `1px solid ${accent ? "rgba(204,255,0,.18)" : LINE}`, color: FG4, fontSize: 12, letterSpacing: ".2em", textTransform: "uppercase" }}>Metric</th>
-          <th style={{ textAlign: "right", padding: "12px 0", borderBottom: `1px solid ${accent ? "rgba(204,255,0,.18)" : LINE}`, color: FG4, fontSize: 12, letterSpacing: ".2em", textTransform: "uppercase" }}>June</th>
-          <th style={{ textAlign: "right", padding: "12px 0", borderBottom: `1px solid ${accent ? "rgba(204,255,0,.18)" : LINE}`, color: accent ? ACID : FG4, fontSize: 12, letterSpacing: ".2em", textTransform: "uppercase" }}>July</th>
+          <th style={{ textAlign: "right", padding: "12px 0", borderBottom: `1px solid ${accent ? "rgba(204,255,0,.18)" : LINE}`, color: FG4, fontSize: 12, letterSpacing: ".2em", textTransform: "uppercase" }}>July</th>
+          <th style={{ textAlign: "right", padding: "12px 0", borderBottom: `1px solid ${accent ? "rgba(204,255,0,.18)" : LINE}`, color: accent ? ACID : FG4, fontSize: 12, letterSpacing: ".2em", textTransform: "uppercase" }}>August</th>
         </tr>
       </thead>
       <tbody>
@@ -1394,45 +1314,39 @@ function DemoSupport() {
   return (
     <React.Fragment>
       <SectionHero id="support" num="07" kicker="support" align="left" glow
-        parts={[{ t: "B2C CSAT " }, { t: "86 → 86.9%.", hi: true }, { t: " B2B CSAT 100%." }]}
-        lead="TFR B2C улучшился до 4m 10s. Меньше запросов и в B2C и в B2B — стабилизация." />
+        parts={[{ t: "B2C CSAT " }, { t: "86.9 → 91%.", hi: true }, { t: " AI Agent 61%." }]}
+        lead="TFR B2C — 3m 21s (было 4m 10s). AI Agent закрывает 61% обращений. B2B TFR немного вырос при том же объёме." />
       <Section tightTop dataLabel="07 Support">
         <div className="dd-two-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(16px, 2vw, 24px)" }}>
           <div style={{ padding: "clamp(24px, 2.8vw, 36px)", borderRadius: 14, border: "1px solid rgba(204,255,0,.28)", background: "linear-gradient(135deg, rgba(204,255,0,.06), rgba(204,255,0,.015) 70%)" }}>
             <h3 style={{ margin: 0, fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(20px, 2vw, 28px)", letterSpacing: ".04em", textTransform: "uppercase", color: ACID }}>B2C</h3>
             {renderTable(b2c, true)}
-            <p style={{ margin: "20px 0 0", fontFamily: FD, fontWeight: 600, fontSize: 12, letterSpacing: ".22em", textTransform: "uppercase", color: FG4 }}>Top queries · July</p>
+            <p style={{ margin: "20px 0 0", fontFamily: FD, fontWeight: 600, fontSize: 12, letterSpacing: ".22em", textTransform: "uppercase", color: FG4 }}>Top queries · August</p>
             <ul style={{ margin: "10px 0 0", padding: 0, listStyle: "none", display: "flex", flexDirection: "column", gap: 8, fontFamily: FD, fontWeight: 500, fontSize: "clamp(15px, 1.6vw, 19px)", lineHeight: 1.45, color: FG2 }}>
-              <li>· <b style={{color: FG}}>KYC · verification · registration</b> — 378 (14.4%)</li>
-              <li>· <b style={{color: FG}}>Apple Pay / Google Pay</b> — 268 (10.2%)</li>
-              <li>· <b style={{color: FG}}>Top-ups / delayed crypto deposits</b> — 187 (7.1%)</li>
+              <li>· <b style={{color: FG}}>Apple Pay / Google Pay</b> — 346 (11.5%)</li>
+              <li>· <b style={{color: FG}}>KYC · verification · registration</b> — 281 (9.4%)</li>
+              <li>· <b style={{color: FG}}>Top-ups / delayed crypto deposits & withdrawals</b> — 272 (9.1%)</li>
             </ul>
           </div>
 
           <div style={{ padding: "clamp(24px, 2.8vw, 36px)", borderRadius: 14, border: `1px solid ${LINE}`, background: "linear-gradient(165deg, rgba(255,255,255,.06), rgba(255,255,255,.015) 70%)" }}>
             <h3 style={{ margin: 0, fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(20px, 2vw, 28px)", letterSpacing: ".04em", textTransform: "uppercase", color: FG }}>B2B</h3>
             {renderTable(b2b)}
-            <p style={{ margin: "20px 0 0", fontFamily: FD, fontWeight: 600, fontSize: 12, letterSpacing: ".22em", textTransform: "uppercase", color: FG4 }}>Top queries · July</p>
+            <p style={{ margin: "20px 0 0", fontFamily: FD, fontWeight: 600, fontSize: 12, letterSpacing: ".22em", textTransform: "uppercase", color: FG4 }}>Top queries · August</p>
             <ul style={{ margin: "10px 0 0", padding: 0, listStyle: "none", display: "flex", flexDirection: "column", gap: 8, fontFamily: FD, fontWeight: 500, fontSize: "clamp(15px, 1.6vw, 19px)", lineHeight: 1.45, color: FG2 }}>
-              <li>· <b style={{color: FG}}>Cards · issuance · limits · activation</b> — 49 (33.8%)</li>
-              <li>· <b style={{color: FG}}>Business account · registration · KYB · sandbox</b> — 37 (25.5%)</li>
-              <li>· <b style={{color: FG}}>Declined transactions · payments</b> — 23 (15.9%)</li>
+              <li>· <b style={{color: FG}}>Business account · registration · KYB</b> — 54 (22.9%)</li>
+              <li>· <b style={{color: FG}}>Virtual accounts · Bank top-up</b> — 50 (21.2%)</li>
+              <li>· <b style={{color: FG}}>Top-ups · delayed crypto deposits</b> — 23 (9.7%)</li>
             </ul>
           </div>
         </div>
 
-        {/* Theme galleries · July */}
+        {/* Feedbacks galleries · August */}
         {[
-          { t: "Apple Pay problems", scope: "B2C", imgs: ["apple_-_call.png","apple_-_call2.png","apple_-_call3.png","apple_-_call5.png","apple_-_unsup_.png","Apple_pay_-_unsup.jpg","apple_unsup_2.png","apple_unsup.png"] },
-          { t: "Karta AI bot stopped working", scope: "B2C", imgs: ["bot_-_no_reply.png","bot_-_positive.png"] },
-          { t: "Closed cards · feedback", scope: "B2C", imgs: ["close_card_-_feedback.png","close_card_-_feedback_2.png"] },
-          { t: "Referral link broken", scope: "B2C", imgs: ["ref_link_1.png","ref_link_2.png"] },
-          { t: "Feature requests", scope: "B2C", imgs: ["feature_request_-_language_-_arab.png","feature_request_-_statement.png","Feature_request_-_VA.png"] },
-          { t: "LaunchDarkly outage · passcode · withdrawals · locked accounts", scope: "B2C", imgs: ["launchDarkly_(_passcode__lock).png","launchDarly_2.png","launchDarkly3.png","launchDarkly4.png"] },
-          { t: "Waiting too long", scope: "B2C", imgs: ["long_wait_-_kyc.png","long_wait_-_kyc2.png","long_wait_-_KYB.png"] },
-          { t: "Negative feedback", scope: "B2C", imgs: ["negative_-_deposit_stuck_.png","negative.png"] },
-          { t: "Memes", scope: "B2C", imgs: ["meme_-_hash.png","meme_-_kyc.png"] },
-          { t: "Positive feedback", scope: "B2C", imgs: ["positive2.jpg","positive3.png","positive4.png","positive5.png"], accent: true },
+          { t: "Apple Pay", scope: "B2C", imgs: ["support-applepay-1.png","support-applepay-2.png","support-applepay-3.png"] },
+          { t: "Rhino delays", scope: "B2C", imgs: ["support-rhino-delays.png"] },
+          { t: "KYC / KYB", scope: "B2C · B2B", imgs: ["support-kyc-kyb-1.png","support-kyc-kyb-2.png","support-kyc-kyb-3.png"] },
+          { t: "Positive feedback", scope: "B2C", imgs: ["support-positive-1.png","support-positive-2.png","support-positive-3.png"], accent: true },
         ].map((g, gi) => (
           <Reveal key={gi} delay={0.04 + gi * 0.02}>
             <div style={{ marginTop: gi === 0 ? "clamp(24px, 2.8vw, 32px)" : "clamp(20px, 2.4vw, 28px)", padding: "clamp(20px, 2.4vw, 30px)", borderRadius: 14, border: `1px solid ${g.accent ? "rgba(204,255,0,.22)" : LINE}`, background: g.accent ? "linear-gradient(135deg, rgba(204,255,0,.04), rgba(204,255,0,.01) 70%)" : "rgba(255,255,255,.025)" }}>
@@ -1440,11 +1354,11 @@ function DemoSupport() {
                 <span style={{ fontFamily: FD, fontWeight: 600, fontSize: 10, letterSpacing: ".22em", textTransform: "uppercase", color: g.accent ? ACID : FG4, padding: "3px 8px", border: `1px solid ${g.accent ? "rgba(204,255,0,.4)" : LINE}`, borderRadius: 4 }}>{g.scope}</span>
                 <h3 style={{ margin: 0, fontFamily: FD, fontWeight: 700, fontStretch: "115%", fontVariationSettings: "'wght' 700,'wdth' 115", fontSize: "clamp(15px, 1.6vw, 20px)", letterSpacing: "-.01em", color: FG, lineHeight: 1.2 }}>{g.t}</h3>
               </div>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 10 }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 10 }}>
                 {g.imgs.map((name) => (
-                  <img key={name} src={`assets/notion-jul/${name}`} alt={g.t}
-                    data-lightbox-src={`assets/notion-jul/${name}`} data-lightbox-cap={g.t}
-                    style={{ width: "100%", height: 220, objectFit: "cover", objectPosition: "top center", borderRadius: 8, border: `1px solid ${LINE}`, background: "#0a0a0a", cursor: "zoom-in", transition: "transform .2s, border-color .2s" }}
+                  <img key={name} src={`assets/notion-aug/${name}`} alt={g.t}
+                    data-lightbox-src={`assets/notion-aug/${name}`} data-lightbox-cap={g.t}
+                    style={{ width: "100%", height: 280, objectFit: "cover", objectPosition: "top center", borderRadius: 8, border: `1px solid ${LINE}`, background: "#0a0a0a", cursor: "zoom-in", transition: "transform .2s, border-color .2s" }}
                     onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(204,255,0,.4)"; e.currentTarget.style.transform = "translateY(-2px)"; }}
                     onMouseLeave={(e) => { e.currentTarget.style.borderColor = LINE; e.currentTarget.style.transform = "translateY(0)"; }} />
                 ))}
@@ -1457,6 +1371,7 @@ function DemoSupport() {
   );
 }
 
+
 /* ==============================================================
    09 · HR & HIRING
    ============================================================== */
@@ -1467,68 +1382,50 @@ function DemoHR() {
         kicker="HR · Наём"
         kickerNode={<React.Fragment>HR · На<span style={{ color: "var(--pp-acid)" }}>ё</span>м</React.Fragment>}
         align="left" glow
-        parts={[{ t: "CPO B2B · " }, { t: "AI Ops on board.", hi: true }]}
-        lead="Два новых senior-найма в июле. Mobile Head — Tech Interview." />
+        parts={[{ t: "5 новых " }, { t: "на борту.", hi: true }]}
+        lead="Marketing Analytics, PM, Mobile Head, Compliance, SMM. Preboarding в PeopleForce и Career Page — в проде." />
       <Section tightTop dataLabel="08 HR">
         <div className="dd-two-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(16px, 2vw, 24px)", alignItems: "stretch" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "clamp(14px, 1.6vw, 20px)" }}>
-            <ColBlock title="Welcome to the team" items={[
-              "<b>CPO B2B</b>",
-              "<b>AI Ops</b> — Никита HIM",
+            <ColBlock title="Welcome on board" items={[
+              "<b>Marketing Analytics</b> — Дмитрий SDD",
+              "<b>Marketing Project Manager</b> — Виктория VIK",
+              "<b>Mobile Lead</b> — Дмитрий VDI",
+              "<b>Compliance Specialist</b> — Варвара",
+              "<b>SMM</b> — Гавриил",
             ]} accent />
-            <ColBlock title="На верном пути" items={[
-              "<b>Mobile Head</b>",
+            <ColBlock title="On track" items={[
+              "<b>Lead Platform Engineer</b> — Posting / HR Screening",
             ]} />
           </div>
-          <img src="assets/notion-jul/image 3.png" alt="A team you are" data-lightbox-src="assets/notion-jul/image 3.png" data-lightbox-cap="A team you are · work together you must" style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: 12, cursor: "zoom-in", display: "block", border: `1px solid ${LINE}` }} />
+          <img src="assets/notion-aug/hr-sasha-vacation.png" alt="Саша в отпуске" data-lightbox-src="assets/notion-aug/hr-sasha-vacation.png" data-lightbox-cap="Саша в отпуске" style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: 12, cursor: "zoom-in", display: "block", border: `1px solid ${LINE}` }} />
         </div>
 
         {/* What's new */}
         <Reveal delay={0.1}>
-          <div style={{ marginTop: "clamp(8px, 1vw, 14px)", padding: "clamp(24px, 2.8vw, 36px)", borderRadius: 14, border: `1px solid ${LINE}`, background: "linear-gradient(165deg, rgba(255,255,255,.06), rgba(255,255,255,.015) 70%)" }}>
-            <span style={{ fontFamily: FD, fontWeight: 600, fontSize: 12, letterSpacing: ".22em", textTransform: "uppercase", color: FG4 }}>What's new</span>
+          <div style={{ marginTop: "clamp(20px, 2.4vw, 30px)", padding: "clamp(24px, 2.8vw, 36px)", borderRadius: 14, border: `1px solid ${LINE}`, background: "linear-gradient(165deg, rgba(255,255,255,.06), rgba(255,255,255,.015) 70%)" }}>
+            <span style={{ fontFamily: FD, fontWeight: 600, fontSize: 12, letterSpacing: ".22em", textTransform: "uppercase", color: FG4 }}>What's new on track</span>
             <h3 style={{ margin: "12px 0 20px", fontFamily: FD, fontWeight: 800, fontStretch: "125%", fontVariationSettings: "'wght' 800,'wdth' 125", fontSize: "clamp(22px, 2.6vw, 34px)", lineHeight: 1.1, color: FG }}>
-              Автоматизация найма
+              Автоматизация процессов
             </h3>
-
-            <div style={{ display: "flex", flexDirection: "column", gap: "clamp(24px, 3vw, 36px)" }}>
-              {/* Auto weekly analytics */}
-              <div>
-                <h4 style={{ margin: "0 0 12px", fontFamily: FD, fontWeight: 700, fontStretch: "115%", fontVariationSettings: "'wght' 700,'wdth' 115", fontSize: "clamp(17px, 1.8vw, 22px)", letterSpacing: "-.012em", color: FG }}>
-                  Автоматическая недельная аналитика с комментариями в Linear
-                </h4>
-                <img src="assets/notion-jul/Снимок_экрана__2026-08-03_в_12.15.04.png" alt="Auto weekly analytics" data-lightbox-src="assets/notion-jul/Снимок_экрана__2026-08-03_в_12.15.04.png" data-lightbox-cap="Auto weekly analytics · Linear" style={{ width: "100%", maxWidth: 960, height: "auto", borderRadius: 10, cursor: "zoom-in", display: "block", border: `1px solid ${LINE}` }} />
-              </div>
-
-              {/* Auto vacancy drafts */}
-              <div>
-                <h4 style={{ margin: "0 0 12px", fontFamily: FD, fontWeight: 700, fontStretch: "115%", fontVariationSettings: "'wght' 700,'wdth' 115", fontSize: "clamp(17px, 1.8vw, 22px)", letterSpacing: "-.012em", color: FG }}>
-                  Автосоздание черновиков вакансий на основе брифа в Notion
-                </h4>
-                <BulletList items={[
-                  "Бриф в Notion → отбивка в Slack (<b>#hr-team</b>) с указанием, кто и когда заполнил",
-                  "Автосоздание карточки вакансии в <b>🎯 Позиции</b>",
-                  "Описание позиции (сайт + Telegram + LinkedIn)",
-                  "Портрет должности + список HR-вопросов",
-                  "Карта поиска + готовые поисковые запросы по каналам",
-                ]} dense />
-                <div style={{ marginTop: 14, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, alignItems: "center" }} className="dd-two-col">
-                  <img src="assets/notion-jul/Снимок_экрана__2026-08-03_в_12.35.27.png" alt="Brief in Notion" data-lightbox-src="assets/notion-jul/Снимок_экрана__2026-08-03_в_12.35.27.png" data-lightbox-cap="Brief в Notion" style={{ width: "100%", height: "auto", borderRadius: 10, cursor: "zoom-in", display: "block", border: `1px solid ${LINE}` }} />
-                  <img src="assets/notion-jul/Снимок_экрана__2026-08-03_в_12.36.01.png" alt="Auto-created vacancy card" data-lightbox-src="assets/notion-jul/Снимок_экрана__2026-08-03_в_12.36.01.png" data-lightbox-cap="Автосозданная карточка вакансии" style={{ width: "100%", height: "auto", borderRadius: 10, cursor: "zoom-in", display: "block", border: `1px solid ${LINE}` }} />
-                </div>
-              </div>
-            </div>
+            <BulletList items={[
+              "Настраиваем процесс <b>пребординга</b> новых сотрудников → автогенерация документов и подписание напрямую в <b>People Force</b>",
+              "Тестируем <b>Career Page</b> для откликов и выводим в прод (спасибо, Гриша!)",
+            ]} />
           </div>
+        </Reveal>
+
+        {/* Hires photo / team overview */}
+        <Reveal delay={0.12}>
+          <img src="assets/notion-aug/hr-team.png" alt="HR overview" data-lightbox-src="assets/notion-aug/hr-team.png" data-lightbox-cap="HR · команда" style={{ marginTop: "clamp(16px, 2vw, 24px)", width: "100%", height: "auto", borderRadius: 12, cursor: "zoom-in", display: "block", border: `1px solid ${LINE}` }} />
         </Reveal>
 
         {/* Plans */}
         <Reveal delay={0.14}>
           <div style={{ marginTop: "clamp(20px, 2.4vw, 30px)", padding: "clamp(24px, 2.8vw, 36px)", borderRadius: 14, border: "1px solid rgba(204,255,0,.28)", background: "linear-gradient(135deg, rgba(204,255,0,.06), rgba(204,255,0,.015) 70%)" }}>
-            <span style={{ fontFamily: FD, fontWeight: 600, fontSize: 12, letterSpacing: ".22em", textTransform: "uppercase", color: ACID }}>Our plans</span>
+            <span style={{ fontFamily: FD, fontWeight: 600, fontSize: 12, letterSpacing: ".22em", textTransform: "uppercase", color: ACID }}>Plans</span>
             <BulletList items={[
-              "Месячная аналитика по всем вакансиям и <b>затратам на найм</b> с выгрузкой в Google Sheets",
-              "Аудит legacy-блока <b>PeopleForce</b> → автоматическое создание документов на основе пребординга",
-              "<b>AI-агент</b> для холодного сбора кандидатов и первичного аутрича",
+              "<b>Месячная аналитика</b> по всем вакансиям и затратам на найм с выгрузкой в Dashboard",
             ]} />
           </div>
         </Reveal>
@@ -1823,6 +1720,6 @@ function VidThumb({ src, cap }) {
 }
 
 Object.assign(window, {
-  DemoHero, DemoContext, DemoBizdev, DemoProduct, DemoDelivery,
+  DemoHero, DemoContext, DemoProduct, DemoDelivery,
   DemoMarketing, DemoDesign, DemoSupport, DemoHR, DemoOPS, DemoQA, DemoOutro, Lightbox, VidThumb,
 });
